@@ -1,5 +1,5 @@
 import express from 'express'
-import { userRegister } from '../controller/authController.js'
+import { userLogin, userRegister } from '../controller/authController.js'
 
 
 const router = express.Router()
@@ -13,6 +13,7 @@ router.get('/', (req, res)=>{
 
 // Creating user
 router.post('/register', userRegister)
+router.post('/login', userLogin)
 
 
 export default router
