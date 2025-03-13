@@ -76,6 +76,7 @@
 
 
 .navbarCenterLinkItem {
+    position: relative;
     color: var(--iconPrimary) !important;
     width: 112px;
     height: 52px;
@@ -107,13 +108,14 @@
 
 
 .active:hover {
+ 
     background-color: transparent;
 }
 
 .active::after {
     position: absolute;
     content: '';
-    bottom: -2px;
+    bottom: 1px;
     width: 100%;
     border-bottom: 3px solid var(--primary);
 
@@ -132,6 +134,7 @@
 }
 
 .navbarRightLinkItem {
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -205,7 +208,11 @@
     color: white;
     background-color: rgb(44, 44, 44);
     padding: 8px 10px;
-    border-radius: 5px;
+    border-radius: 8px;
+}
+
+.centerItemContainer{
+    position: relative;
 }
 
 .menu:hover::after{
@@ -218,4 +225,21 @@
 
 .notifications:hover::after{
     content: 'Notifications';
+}
+
+.friends:hover::after{
+    content:'Friends'
+}
+.video:hover::after{
+    content:'Videos'
+}
+.marketplace:hover::after{
+    content:'Marketplace'
+}
+.groups:hover::after{
+    content:'Groups'
+}
+
+.home:hover::after{
+    content: 'Home';
 }

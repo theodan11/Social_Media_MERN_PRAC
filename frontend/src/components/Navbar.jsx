@@ -19,21 +19,45 @@ const Navbar = () => {
 
             <div className="navbarCenter">
                 <div className="navbarCenterLinks">
-                    <div className="navbarCenterLinkItem active">
-                        <Home className='centerIcon' />
+                    <div className="centerItemContainer active">
+
+                        <div className="navbarCenterLinkItem  hcontent home">
+                            <Home className='centerIcon active' />
+                        </div>
                     </div>
-                    <div className="navbarCenterLinkItem">
-                        <PeopleTwoTone className='centerIcon' />
+
+                    <div className="centerItemContainer ">
+                        <div className="navbarCenterLinkItem hcontent friends">
+                            <PeopleTwoTone className='centerIcon' />
+                        </div>
+
                     </div>
-                    <div className="navbarCenterLinkItem">
-                        <OndemandVideo className='centerIcon' />
+
+                    <div className="centerItemContainer ">
+                        <div className="navbarCenterLinkItem hcontent video">
+                            <OndemandVideo className='centerIcon' />
+                        </div>
                     </div>
-                    <div className="navbarCenterLinkItem">
-                        <Storefront className='centerIcon' />
+
+                    <div className="centerItemContainer ">
+                        <div className="navbarCenterLinkItem hcontent marketplace">
+                            <Storefront className='centerIcon' />
+                        </div>
                     </div>
-                    <div className="navbarCenterLinkItem">
-                        <PeopleOutlineTwoTone className='centerIcon' />
+
+
+                    <div className="centerItemContainer ">
+                        <div className="navbarCenterLinkItem hcontent groups">
+                            <PeopleOutlineTwoTone className='centerIcon' />
+                        </div>
                     </div>
+
+
+                   
+
+
+
+
                 </div>
             </div>
 
@@ -56,7 +80,7 @@ const Navbar = () => {
                     <div className="navbarRightLinkItem">
                         <Person className='rightIcon' />
                         <span className='profileBadge'><KeyboardArrowDown /></span>
-                        
+
                     </div>
                 </div>
             </div>
