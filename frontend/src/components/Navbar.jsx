@@ -7,7 +7,7 @@ const Navbar = () => {
         <div className='navbarContainer'>
             <div className="navbarLeft">
 
-                <span className="logo">f </span>
+                <span className="logo">t </span>
                 <div className="searchContainer">
                     <Search className='searchIcon' />
                     <input type="text" placeholder='Search...' className="searchInput" />
