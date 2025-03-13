@@ -75,6 +75,8 @@ const likePost = async (req, res) => {
 
 const deletePost = async(req, res)=>{
     try {
+        const post = await PostModel.findOne(req.params.id)
+        if(!post) return res.status(404).json({"error":"post not found"})
         await PostModel.findByIdAndDelete(req.params.id)
         return res.status(200).json({"msg":"action completed"})
         
