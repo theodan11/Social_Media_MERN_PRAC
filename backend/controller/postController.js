@@ -1,4 +1,5 @@
 import PostModel from '../model/postModel.js'
+import UserModel from '../model/userModel.js'
 
 
 const createPost = async (req, res) => {
@@ -89,4 +90,36 @@ const deletePost = async (req, res) => {
     }
 }
 
-export { createPost, getAllPost, getSinglePost, updatePost, likePost, deletePost }
+
+const userPosts = async (req, res) => {
+    const posts = await PostModel.find({ userId: req.params.id })
+    return res.status(200).json(posts)
+}
+
+
+const userTimeline = async (req, res) => {
+    try {
+        const currentUser = await UserModel.findById(req.body.userId)
+        const userPost = await PostModel.find({ userId: currentUser._id })
+        const friendsPost = await Promise.all(currentUser.followings.map((friendId) => {
+         return  PostModel.find({ userId: friendId })
+        }))
+        const timeline = userPost.concat(...friendsPost)
+        return res.status(200).json(timeline)
+
+    } catch (error) {
+        return res.status(500).json({ "msg": "internal error" })
+    }
+
+}
+
+export {
+    createPost,
+    getAllPost,
+    getSinglePost,
+    updatePost,
+    likePost,
+    deletePost,
+    userPosts,
+    userTimeline
+}

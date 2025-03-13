@@ -1,5 +1,5 @@
 import express from 'express'
-import { createPost, getAllPost, getSinglePost, updatePost,likePost, deletePost } from '../controller/postController.js'
+import { createPost, getAllPost, getSinglePost, updatePost,likePost, deletePost,userPosts,userTimeline } from '../controller/postController.js'
 import { verifyUser} from '../utils/verifyToken.js'
 
 
@@ -20,7 +20,8 @@ router.post('/create', createPost)
 router.put('/:id/update',verifyUser,  updatePost)
 router.put('/:id/like',verifyUser,  likePost)
 router.delete('/:id/delete', verifyUser, deletePost)
-
+router.get('/:id/posts', userPosts)
+router.get('/user/timeline', userTimeline)
 
 
 
