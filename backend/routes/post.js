@@ -1,6 +1,6 @@
 import express from 'express'
-import { createPost, getAllPost } from '../controller/postController.js'
-
+import { createPost, getAllPost, getSinglePost, updatePost } from '../controller/postController.js'
+import { verifyUser} from '../utils/verifyToken.js'
 
 
 const router = express.Router()
@@ -15,7 +15,9 @@ router.get('/test',async (req, res)=>{
 
 
 router.get('/', getAllPost)
+router.get('/:id', getSinglePost)
 router.post('/create', createPost)
+router.put('/:id/update',verifyUser,  updatePost)
 
 router.put('/update')
 

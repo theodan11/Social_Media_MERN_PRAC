@@ -16,7 +16,7 @@ const verifyToken = (req, res, next)=>{
 
 const verifyUser = (req, res, next)=>{
     verifyToken(req, res, (err)=>{
-        if(req.user.id == req.params.id){
+        if(req.user.id === req.params.id || req.user.id === req.body.userId){
             next()
         }else{
             return res.status(403).json({"msg":"You are not authorized to perform this action"})
