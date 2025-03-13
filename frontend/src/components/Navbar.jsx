@@ -20,7 +20,6 @@ const Navbar = () => {
             <div className="navbarCenter">
                 <div className="navbarCenterLinks">
                     <div className="centerItemContainer active">
-
                         <div className="navbarCenterLinkItem  hcontent home">
                             <Home className='centerIcon active' />
                         </div>
@@ -53,7 +52,7 @@ const Navbar = () => {
                     </div>
 
 
-                   
+
 
 
 
@@ -77,8 +76,8 @@ const Navbar = () => {
                         <Notifications className='rightIcon' />
                         <span className='badge'>1</span>
                     </div>
-                    <div className="navbarRightLinkItem">
-                        <Person className='rightIcon' />
+                    <div className="profileImageContainer">
+                       <img src="/assets/person/1.jpeg" className='profileImage' alt="" />
                         <span className='profileBadge'><KeyboardArrowDown /></span>
 
                     </div>

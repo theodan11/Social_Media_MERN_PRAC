@@ -9,5 +9,7 @@
 :root{
   --primary: #0866FF;
   --secondary: #F2F4F7;
+  --hover-background: #E6E8EA;
+
   --iconPrimary: rgb(186, 184, 184);
 }

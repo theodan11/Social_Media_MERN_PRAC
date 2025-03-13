@@ -1,21 +1,25 @@
 .navbarContainer {
+    z-index: 99;
     padding: 0 15px;
     width: 100vw;
     background-color: rgb(255, 255, 255);
     height: 56px;
     display: flex;
     align-items: center;
+    position: relative;
     -webkit-box-shadow: 0px -3px 12px -3px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px -3px 12px -3px rgba(0, 0, 0, 0.75);
     box-shadow: 0px -3px 12px -3px rgba(0, 0, 0, 0.75);
 }
 
 .navbarLeft {
-    flex: 1;
+    flex:2.6;
     display: flex;
     gap: 10px;
 
 }
+
+
 
 .logo {
     width: 40px;
@@ -61,7 +65,7 @@
 }
 
 .navbarCenter {
-    flex: 3;
+    flex: 5.5;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -102,39 +106,31 @@
 .active {
     color: var(--primary) !important;
     position: relative;
-
-
 }
 
-
-.active:hover {
- 
-    background-color: transparent;
-}
 
 .active::after {
     position: absolute;
     content: '';
     bottom: 1px;
     width: 100%;
-    border-bottom: 3px solid var(--primary);
+    border-bottom: 3.5px solid var(--primary);
 
 }
 
 .navbarCenterLinks {
     display: flex;
+   
 }
 
 .navbarRight {
-    flex: 1;
+    flex:3.2;
     display: flex;
     width: 186px;
     justify-content: end;
-
 }
 
 .navbarRightLinkItem {
-    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -143,12 +139,14 @@
     background-color: var(--secondary);
     border-radius: 50%;
     position: relative;
-    margin-left: 8px;
+    /* margin-left: 8px; */
 }
 
 .navbarRightLinkItem:hover {
     background-color: rgb(237, 237, 237);
 }
+
+
 
 .badge {
     display: flex;
@@ -172,6 +170,15 @@
     width: 26px !important;
     height: 26px !important;
 
+}
+.profileImageContainer{
+    position: relative;
+}
+.profileImage{
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .profileBadge {
@@ -197,6 +204,8 @@
 
 .navbarRightLinks {
     display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .hcontent:hover::after{
@@ -243,3 +252,4 @@
 .home:hover::after{
     content: 'Home';
 }
+
