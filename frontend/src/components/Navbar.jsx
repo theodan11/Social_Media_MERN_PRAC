@@ -1,15 +1,15 @@
 import './navbar.css'
-import { Home, WhatsApp, Notifications, Widgets, PeopleOutlineTwoTone, PeopleTwoTone, Search, Storefront, OndemandVideo, Person } from '@mui/icons-material'
+import { KeyboardArrowDown, Home, WhatsApp, Notifications, Widgets, PeopleOutlineTwoTone, PeopleTwoTone, Search, Storefront, OndemandVideo, Person } from '@mui/icons-material'
 import React from 'react'
 
 const Navbar = () => {
     return (
         <div className='navbarContainer'>
             <div className="navbarLeft">
-                
+
                 <span className="logo">f </span>
                 <div className="searchContainer">
-                    <Search className='searchIcon'/>
+                    <Search className='searchIcon' />
                     <input type="text" placeholder='Search...' className="searchInput" />
                 </div>
             </div>
@@ -20,19 +20,19 @@ const Navbar = () => {
             <div className="navbarCenter">
                 <div className="navbarCenterLinks">
                     <div className="navbarCenterLinkItem active">
-                        <Home className='centerIcon'/>
+                        <Home className='centerIcon' />
                     </div>
                     <div className="navbarCenterLinkItem">
-                        <PeopleTwoTone className='centerIcon'/>
+                        <PeopleTwoTone className='centerIcon' />
                     </div>
                     <div className="navbarCenterLinkItem">
-                        <OndemandVideo className='centerIcon'/>
+                        <OndemandVideo className='centerIcon' />
                     </div>
                     <div className="navbarCenterLinkItem">
-                        <Storefront className='centerIcon'/>
+                        <Storefront className='centerIcon' />
                     </div>
                     <div className="navbarCenterLinkItem">
-                        <PeopleOutlineTwoTone className='centerIcon'/>
+                        <PeopleOutlineTwoTone className='centerIcon' />
                     </div>
                 </div>
             </div>
@@ -42,19 +42,21 @@ const Navbar = () => {
 
             <div className="navbarRight">
                 <div className="navbarRightLinks">
-                    <div className="navbarRightLinkItem">
-                        <Widgets className='rightIcon'/>
+                    <div className="navbarRightLinkItem hcontent menu">
+                        <Widgets className='rightIcon' />
                     </div>
-                    <div className="navbarRightLinkItem">
-                        <WhatsApp className='rightIcon'/>
+                    <div className="navbarRightLinkItem hcontent message">
+                        <WhatsApp className='rightIcon' />
                         <span className='badge'>99</span>
                     </div>
-                    <div className="navbarRightLinkItem">
-                        <Notifications className='rightIcon'/>
+                    <div className="navbarRightLinkItem hcontent notifications">
+                        <Notifications className='rightIcon' />
                         <span className='badge'>1</span>
                     </div>
                     <div className="navbarRightLinkItem">
-                        <Person className='rightIcon'/>
+                        <Person className='rightIcon' />
+                        <span className='profileBadge'><KeyboardArrowDown /></span>
+                        
                     </div>
                 </div>
             </div>
