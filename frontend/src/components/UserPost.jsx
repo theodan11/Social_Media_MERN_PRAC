@@ -1,7 +1,7 @@
 import { CloseTwoTone, CommentTwoTone, FavoriteTwoTone, MoreHorizTwoTone, PublicTwoTone, ReplyTwoTone, ThumbUpAltTwoTone } from '@mui/icons-material'
 import React from 'react'
 
-const UserPost = ({profileImage, postImage}) => {
+const UserPost = ({profileImage, postImage, username, postCaption}) => {
   return (
     <div className="postContainer">
         <div className="titleContainer">
@@ -9,7 +9,7 @@ const UserPost = ({profileImage, postImage}) => {
 
             <img src={profileImage} alt="" />
             <div className="nameAndDate">
-              <span className='name'>Jane Doe</span>
+              <span className='name'>{username}</span>
               <span className='date'>March 9 at 9:02 PM - <PublicTwoTone className='dateIcon' /></span>
             </div>
           </div>
@@ -27,7 +27,7 @@ const UserPost = ({profileImage, postImage}) => {
         </div>
 
         <div className="postContentContainer">
-          <p className='postCaption'>Good morning to night!🤣</p>
+          <p className='postCaption'>{postCaption}</p>
           <img src={postImage} className='postImage' alt="" />
         </div>
         <div className="likeCommentAndShareCount">
