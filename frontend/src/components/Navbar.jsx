@@ -70,11 +70,11 @@ const Navbar = () => {
                     </div>
                     <div className="navbarRightLinkItem hcontent message">
                         <WhatsApp className='rightIcon' />
-                        <span className='badge'>99</span>
+                        <span className='badge'>2</span>
                     </div>
                     <div className="navbarRightLinkItem hcontent notifications">
                         <Notifications className='rightIcon' />
-                        <span className='badge'>1</span>
+                        <span className='badge'>5</span>
                     </div>
                     <div className="profileImageContainer">
                        <img src="/assets/person/1.jpeg" className='profileImage' alt="" />

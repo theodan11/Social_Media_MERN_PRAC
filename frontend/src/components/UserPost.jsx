@@ -41,6 +41,7 @@ const UserPost = ({profileImage, postImage, username, postCaption}) => {
           </div>
 
         </div>
+        <hr />
         <div className="likeCommentAndShareBtn">
           <div className="lcsBtnContainer likeContainer">
             <ThumbUpAltTwoTone />

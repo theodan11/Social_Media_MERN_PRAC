@@ -3,7 +3,11 @@ import './rightSidebar.css'
 
 const RightSidebar = () => {
   return (
-    <div className='rightSidebarContainer'>RightSidebar</div>
+    <div className='rightSidebarContainer'>
+      <div className="rightSidebarWrapper">
+        
+      </div>
+    </div>
   )
 }
 
