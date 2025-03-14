@@ -190,6 +190,7 @@ hr {
     display: flex;
     align-items: center;
     justify-content: space-around;
+   
 }
 
 .lcsBtnContainer {
@@ -205,3 +206,4 @@ hr {
 .lcsBtnContainer:hover {
     background-color: var(--secondary);
 }
+
