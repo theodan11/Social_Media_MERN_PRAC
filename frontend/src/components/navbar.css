@@ -1,12 +1,13 @@
 .navbarContainer {
     z-index: 99;
+    top: 0;
     padding: 0 15px;
     width: 100vw;
     background-color: rgb(255, 255, 255);
     height: 56px;
     display: flex;
     align-items: center;
-    position: relative;
+    position: sticky;
     -webkit-box-shadow: 0px -3px 12px -3px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px -3px 12px -3px rgba(0, 0, 0, 0.75);
     box-shadow: 0px -3px 12px -3px rgba(0, 0, 0, 0.75);

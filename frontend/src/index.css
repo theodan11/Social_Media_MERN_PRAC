@@ -9,9 +9,11 @@
 
 :root{
   --primary: #0866FF;
+  --button-hover: #1560db;
+  
   --secondary: #F2F4F7;
   --hover-background: #E6E8EA;
-
+  --icon-color:  rgb(139, 139, 139);
   --iconPrimary: rgb(186, 184, 184);
 }
 

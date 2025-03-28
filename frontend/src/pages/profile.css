@@ -1,0 +1,96 @@
+.profile {
+    background: var(--secondary);
+    width: 100vw;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.topContainer {
+    background: rgb(251,251,255);
+    background: linear-gradient(0deg, rgba(251,251,255,1) 42%, rgba(197,197,197,1) 63%, rgba(0,0,0,1) 100%); 
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    /* margin-bottom: 50px; */
+}
+
+.profileContainer {
+    position: relative;
+    width: 100px;
+
+}
+
+/* {1095x724} */
+
+
+.cImage {
+    object-fit: cover;
+    width: 1095px;
+    height: 410px;
+    border-radius: 0 0 8px 8px;
+    cursor: pointer;
+}
+
+.pImage {
+    left: -450px;
+    border: 5px solid white;
+    position: absolute;
+    bottom: -100px;
+    width: 170px;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.profilName {
+    width: 100%;
+    max-width: 1095px;
+    /* margin-top: 20px; */
+    background: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px 80px 250px;
+    border-radius: 8px;
+}
+
+
+
+.profileNameContainer>p {
+    color: var(--icon-color);
+}
+
+.profileNameActions {
+    display: flex;
+
+}
+
+.buttonContainer {
+    gap: 5px;
+    padding: 8px 10px;
+    background-color: var(--primary);
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-left: 1.2rem;
+    transition: .3s;
+}
+
+.buttonContainer:hover {
+    background-color: var(--button-hover);
+
+}
+
+.bodyContainer {
+    display: flex;
+    flex-direction: column;
+}

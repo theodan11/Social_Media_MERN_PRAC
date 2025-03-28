@@ -1,13 +1,15 @@
 
 import './App.css'
+import Navbar from './components/Navbar'
 import Home from './pages/Home_page.jsx'
+import Profile_page from './pages/Profile_page'
 
 function App() {
 
   return (
     <>
-    
-      <Home/>
+      <Navbar/>
+      <Profile_page/>
     </>
   )
 }

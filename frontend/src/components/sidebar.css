@@ -1,10 +1,12 @@
 .sidebar{
-    flex:2.6;
+    /* margin-right:150px ; */
+    position: sticky;
+    top: 50px;
+    flex:5;
     height: calc(100vh - 58px);
     overflow-y: scroll;
     scrollbar-width: thin;  /* Options: auto, thin, none */
     scrollbar-color: #cfcfcf #f1f1f1;
-    
 }
 
 ::-webkit-scrollbar{
