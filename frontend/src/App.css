@@ -1,0 +1,22 @@
+.m-btn{
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    font-weight: bold;
+    color: rgb(49, 49, 49);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.m-btn-primary{
+    background-color:var(--primary);
+    color: white;
+}
+
+.m-btn-primary:hover{
+    background-color:var(--button-hover) ;
+}

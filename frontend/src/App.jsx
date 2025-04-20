@@ -10,6 +10,7 @@ function App() {
     <>
       <Navbar/>
       <Profile_page/>
+      {/* <Home/> */}
     </>
   )
 }

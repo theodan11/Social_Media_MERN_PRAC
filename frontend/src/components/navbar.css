@@ -113,6 +113,7 @@
 .active::after {
     position: absolute;
     content: '';
+    left: 0;
     bottom: 1px;
     width: 100%;
     border-bottom: 3.5px solid var(--primary);
