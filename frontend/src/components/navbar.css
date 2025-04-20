@@ -114,9 +114,9 @@
     position: absolute;
     content: '';
     left: 0;
-    bottom: 1px;
+    bottom: -0.8px;
     width: 100%;
-    border-bottom: 3.5px solid var(--primary);
+    border-bottom: 4px solid var(--primary);
 
 }
 

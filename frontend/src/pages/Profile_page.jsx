@@ -6,18 +6,20 @@ import IntroItems from '../components/IntroItems'
 import Feed from '../components/Feed'
 import UserPost from '../components/UserPost'
 import ProfileTopSection from '../components/ProfileTopSection'
+import RightProfileContent from '../components/RightProfileContent'
+import LeftProfileContent from '../components/LeftProfileContent'
 
 const Profile_page = () => {
     return (
-        <div className='profile'>
+        <>
             <ProfileTopSection />
-            <div className="profileContents">
-                <div className="leftContents"></div>
-                <div className="rightContents">
-
+            <div className='profile'>
+                <div className="profileContents">
+                    <LeftProfileContent />
+                    <RightProfileContent />
                 </div>
             </div>
-        </div>
+        </>
 
     )
 }
