@@ -1,15 +1,20 @@
 
 import './App.css'
 import Navbar from './components/Navbar'
-import Home from './pages/Home_page.jsx'
-import Profile_page from './pages/Profile_page'
+import Home from './pages/HomePage'
+import LoginPage from './pages/LoginPage'
+import Profile_page from './pages/ProfilePage'
+import RegisterPage from './pages/RegisterPage'
+
 
 function App() {
 
   return (
     <>
-      <Navbar/>
-      <Profile_page/>
+    <RegisterPage/>
+      {/* <LoginPage/> */}
+      {/* <Navbar/> */}
+      {/* <Profile_page/> */}
       {/* <Home/> */}
     </>
   )

@@ -1,29 +1,29 @@
-.profileTopContainer{
-    height: 80vh;
+.profileTopContainer {
+    height: 592px;
     background: linear-gradient(180deg, rgb(26, 26, 26) 0%, white 60%);
     display: flex;
     justify-content: center;
     box-shadow: 0 2px 10px 1px rgb(199, 196, 196);
 }
 
-.container{
+.container {
     max-width: 1024px;
-    
+
 }
 
-.imgContainer{
+.imgContainer {
     height: 400px;
     overflow: hidden;
     border-radius: 0 0 8px 8px;
     cursor: pointer;
 }
 
-.pNameAndActions{
+.pNameAndActions {
     position: relative;
-   
+
 }
 
-.pImage{
+.pImage {
 
     position: absolute;
     left: 15px;
@@ -35,14 +35,14 @@
     border: 5px solid white;
 }
 
-.pImage > img{
+.pImage>img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     cursor: pointer;
 }
 
-.actionsContainer{
+.actionsContainer {
     display: flex;
     margin-left: 210px;
     align-items: flex-end;
@@ -50,48 +50,51 @@
     padding: 20px;
 }
 
-.nameAndFriends .name{
+.nameAndFriends .name {
     font-size: 38px;
     margin-bottom: 4px;
 }
 
-.nameAndFriends .friends{
+.nameAndFriends .friends {
     color: rgb(120, 120, 120);
 }
 
-.tabsAndActions{
+.tabsAndActions {
     display: flex;
     align-items: center;
     justify-content: space-between;
     /* padding: 15px; */
 }
 
-.leftActions{
+.leftActions {
     display: flex;
     /* justify-content: space-between; */
     align-items: center;
     gap: 3px;
 }
 
-.leftActions .leftAction-item{
+.leftActions .leftAction-item {
     padding: 22px 14px;
     border-radius: 5px;
     cursor: pointer;
 }
 
-.leftActions .leftAction-item:hover{
-    background-color: var(--hover-background) ;
+.leftActions .leftAction-item:hover {
+    background-color: var(--hover-background);
 }
 
-.rightActions{
+.rightActions {
     background-color: var(--secondary);
     padding: 8px 11px;
     border-radius: 4px;
-cursor: pointer;
-transition: background-color .3s ease;
+    cursor: pointer;
+    transition: background-color .3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.rightActions:hover{
+.rightActions:hover {
     background-color: var(--hover-background);
 
 }

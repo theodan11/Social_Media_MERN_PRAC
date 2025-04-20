@@ -10,7 +10,7 @@
     height: 120px;
     background-color: white;
     border-radius: 10px;
-    margin: 20px 8px;
+    margin: inherit;
     -webkit-box-shadow: 1px 8px 6px -4px rgba(176, 176, 176, 1);
     -moz-box-shadow: 1px 8px 6px -4px rgba(176, 176, 176, 1);
     box-shadow: 1px 8px 6px -4px rgba(176, 176, 176, 1);
