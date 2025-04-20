@@ -10,10 +10,15 @@ import ProfileTopSection from '../components/ProfileTopSection'
 const Profile_page = () => {
     return (
         <div className='profile'>
-            <ProfileTopSection/>
+            <ProfileTopSection />
+            <div className="profileContents">
+                <div className="leftContents"></div>
+                <div className="rightContents">
 
+                </div>
+            </div>
         </div>
-     
+
     )
 }
 

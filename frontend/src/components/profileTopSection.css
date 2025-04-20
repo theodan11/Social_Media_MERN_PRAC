@@ -1,5 +1,5 @@
 .profileTopContainer{
-    height: 78vh;
+    height: 80vh;
     background: linear-gradient(180deg, rgb(26, 26, 26) 0%, white 60%);
     display: flex;
     justify-content: center;
@@ -74,7 +74,7 @@
 }
 
 .leftActions .leftAction-item{
-    padding: 18px 14px;
+    padding: 24px 14px;
     border-radius: 5px;
     cursor: pointer;
 }
