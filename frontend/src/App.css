@@ -48,4 +48,11 @@
     font-size: 20px;
     font-weight: bold;
     background-color: #36A420;
+    transition: background-color .3s ease;
 }
+
+.create-btn:hover{
+
+    background-color:#00A400;
+}
+

@@ -4,5 +4,82 @@
     align-items: center;
     width: 100vw;
     height: 100vh;
+   
     background-color: var(--secondary);
+}
+
+.title  {
+    text-align: center;
+}
+
+.title >p{
+    margin-top: 10px;
+    color: rgb(160, 160, 160);
+}
+
+.registerContainer{
+    gap: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.registerContainer > h1{
+    color: var(--primary);
+}
+
+.signupCard{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 432px;
+    gap: 14px;
+}
+
+.signupCard .termsandcondition p{
+    font-size: 11px;
+    color: rgb(123, 123, 123);
+    margin-bottom: 15px;
+
+}
+
+.nameContainer{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.my-input{
+    font-size: 17px;
+    /* border: none; */
+    border: .8px solid gray;
+    padding: 14px 16px;
+  
+    /* width: 330px; */
+    border-radius: 6px;
+}
+
+.my-input>input{
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+.m-input-full{
+    width: 100%;
+}
+
+.signupCard > a{
+    margin-bottom: 20px;
+    text-decoration: none;
+}
+
+.s-btn{
+    width: 70%;
+    margin-bottom: 20px;
+}
+
+.my-input:focus-within{
+    outline: 1px solid var(--primary);
 }
