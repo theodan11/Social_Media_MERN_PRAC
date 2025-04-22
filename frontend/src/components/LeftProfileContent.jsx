@@ -1,11 +1,11 @@
 import React from 'react'
 
-const LeftProfileContent = () => {
+const LeftProfileContent = ({user}) => {
   return (
     <div className='leftContentContainer'>
       <div className="introCard card">
         <h2 className='title'>Intro</h2>
-        <p className='desc'>Lorem ipsum it. Sit, dicta lorem200</p>
+        <p className='desc'>{user.desc}</p>
 <hr />
       </div>
 
@@ -16,7 +16,7 @@ const LeftProfileContent = () => {
       </div>
       <div className="leftContentFriends card">
         <h2 className='title'>Friends</h2>
-        <p className='friendsSub'>420 (2 mutual)</p>
+        <p className='friendsSub'>{user.followers?.length} friends</p>
 
       </div>
     </div>

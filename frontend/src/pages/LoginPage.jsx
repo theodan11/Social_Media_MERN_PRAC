@@ -1,27 +1,59 @@
-import React from 'react'
+import React, { useContext, useRef } from 'react'
 import './loginPage.css'
+import { AuthContext } from '../context/AuthContext'
+import { LoginFailed, LoginStart, LoginSuccess } from '../context/AuthAction'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const LoginPage = () => {
+    const { dispatch } = useContext(AuthContext)
+    const navigate = useNavigate() 
+
+    const email = useRef()
+    const password = useRef()
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        dispatch(LoginStart())
+        const user = {
+            email: email.current.value,
+            password: password.current.value
+        }
+        // console.log(user)
+        try {
+            const res = await axios.post("http://localhost:8000/api/v1/auth/login",
+                user
+            )
+            console.log(res)
+            if (res.status == 200) {
+                dispatch(LoginSuccess(res.data))
+                navigate('/')
+            }
+        } catch (error) {
+            dispatch(LoginFailed(error))
+        }
+    }
+
     return (
         <div className='loginPage'>
             <div className="logoContainer">
                 <h1>theophil</h1>
                 <h2>theophil helps you connect and share<br></br> with the people in your life</h2>
             </div>
-            <div className="loginForm card">
+            <form className="loginForm card" onSubmit={handleSubmit}>
                 <div className="inputCon">
 
-                    <input type="text" placeholder='Email address or phone number' />
+                    <input type="text" placeholder='Email address or phone number' ref={email} />
                 </div>
                 <div className="inputCon">
-                    <input type="password" placeholder='Password' />
+                    <input type="password" placeholder='Password' ref={password} />
 
                 </div>
                 <button className='m-btn m-btn-primary ' id='login'>Log in</button>
                 <p>Forgotten password?</p>
                 <hr />
-                <button className='m-btn create-btn'>Create new account</button>
-            </div>
+                <button type='submit' className='m-btn create-btn'>Create new account</button>
+            </form>
         </div>
     )
 }

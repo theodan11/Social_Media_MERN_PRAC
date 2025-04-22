@@ -8,23 +8,30 @@
 
 .container {
     max-width: 1024px;
+    min-width: 1024px;
+
 
 }
 
 .imgContainer {
+    /* position: relative; */
+    /* z-index: 1; */
     height: 400px;
     overflow: hidden;
     border-radius: 0 0 8px 8px;
     cursor: pointer;
+    object-fit: cover;
 }
 
+.imgContainer > img{
+    width: 100%;
+}
 .pNameAndActions {
     position: relative;
 
 }
 
 .pImage {
-
     position: absolute;
     left: 15px;
     top: -70px;

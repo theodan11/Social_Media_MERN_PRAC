@@ -1,13 +1,19 @@
+import React, { useContext } from 'react'
+import { Link } from 'react-router-dom'
 import './navbar.css'
 import { KeyboardArrowDown, Home, WhatsApp, Notifications, Widgets, PeopleOutlineTwoTone, PeopleTwoTone, Search, Storefront, OndemandVideo, Person } from '@mui/icons-material'
-import React from 'react'
+import { AuthContext } from '../context/AuthContext'
+
 
 const Navbar = () => {
+    const { user } = useContext(AuthContext)
+
     return (
         <div className='navbarContainer'>
             <div className="navbarLeft">
-
-                <span className="logo">t </span>
+                <Link to={'/'} style={{ textDecoration: "none" }}>
+                    <span className="logo">t </span>
+                </Link>
                 <div className="searchContainer">
                     <Search className='searchIcon' />
                     <input type="text" placeholder='Search...' className="searchInput" />
@@ -76,11 +82,13 @@ const Navbar = () => {
                         <Notifications className='rightIcon' />
                         <span className='badge'>5</span>
                     </div>
+                    <Link to={`profile/${user._id}`}>
                     <div className="profileImageContainer">
-                       <img src="/assets/person/1.jpeg" className='profileImage' alt="" />
+                        <img src={user.profilePicture || `/assets/default_dp.jpg`} className='profileImage' alt="" />
                         <span className='profileBadge'><KeyboardArrowDown /></span>
 
                     </div>
+                    </Link>
                 </div>
             </div>
         </div>

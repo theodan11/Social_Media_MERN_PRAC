@@ -2,22 +2,24 @@ import React from 'react'
 import './profileTopSection.css'
 import { Message , MoreHoriz} from '@mui/icons-material'
 
-const ProfileTopSection = () => {
+const ProfileTopSection = ({user}) => {
+    console.log('from top section ',user)
+    console.log(user?.coverPicture)
     return (
         <div className='profileTopContainer'>
             <div className="container">
                 <div className="imgContainer">
-                    <img src="../../public/assets/post/1.jpeg" alt="" srcset="" />
+                    <img srcSet={'https://'+user?.coverPicture || '/assets/default_cover.jpg'} alt="" srcset="" />
                 </div>
                 <div className="pNameAndActions">
                     <div className="pImage">
-                        <img src="../../public/assets/person/1.jpeg" alt="" />
+                        <img srcSet={user.profilePicture || "/assets/default_dp.jpg"} alt="" />
                     </div>
                     <div className="actionsContainer">
 
                         <div className="nameAndFriends">
-                            <h2 className='name'>Jane Doe</h2>
-                            <p className='friends'>32 friends</p>
+                            <h2 className='name'>{user.username}</h2>
+                            <p className='friends'>{user.followers?.length} friends</p>
                         </div>
 
                         <div className="actions">

@@ -14,14 +14,14 @@ router.get('/test',async (req, res)=>{
 
 
 
-router.get('/', getAllPost)
+router.get('/timeline', getAllPost)
 router.get('/:id', getSinglePost)
 router.post('/create', createPost)
 router.put('/:id/update',verifyUser,  updatePost)
 router.put('/:id/like',verifyUser,  likePost)
 router.delete('/:id/delete', verifyUser, deletePost)
 router.get('/:id/posts', userPosts)
-router.get('/user/timeline', userTimeline)
+router.get('/user/timeline/:userId', userTimeline)
 
 
 

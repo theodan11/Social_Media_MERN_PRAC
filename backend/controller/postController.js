@@ -93,18 +93,20 @@ const deletePost = async (req, res) => {
 
 const userPosts = async (req, res) => {
     const posts = await PostModel.find({ userId: req.params.id })
+    posts.sort((a, b)=>b.createdAt-a.createdAt)
     return res.status(200).json(posts)
 }
 
 
 const userTimeline = async (req, res) => {
     try {
-        const currentUser = await UserModel.findById(req.body.userId)
+        const currentUser = await UserModel.findById(req.params.userId)
         const userPost = await PostModel.find({ userId: currentUser._id })
         const friendsPost = await Promise.all(currentUser.followings.map((friendId) => {
          return  PostModel.find({ userId: friendId })
         }))
         const timeline = userPost.concat(...friendsPost)
+        timeline.sort((a, b)=> b.createdAt - a.createdAt)
         return res.status(200).json(timeline)
 
     } catch (error) {

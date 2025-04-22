@@ -1,5 +1,6 @@
 .feedContainer {
     flex: 4;
+    padding-top: 20px;
 }
 
 .creatPost {
@@ -15,7 +16,19 @@
     -moz-box-shadow: 1px 8px 6px -4px rgba(176, 176, 176, 1);
     box-shadow: 1px 8px 6px -4px rgba(176, 176, 176, 1);
 }
+.likeContainer{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
+.likeContainer> img{
+    width: 24px;
+}
+
+.likeContainer> span{
+    color: rgb(106, 106, 106);
+}
 .profileImage {
     width: 40px;
     height: 40px;
@@ -66,9 +79,16 @@ hr {
     gap: 10px;
     padding: 6px 20px;
     border-radius: 10px;
+    cursor: pointer;
 }
 
-.btnItem:hover {
+.btnS{
+    padding: 6px 20px;
+    background-color: white;
+    /* color: blue; */
+}
+
+.btnItem:hover, .btnS:hover{
     background-color: var(--secondary);
 
 }
@@ -83,9 +103,10 @@ hr {
 }
 
 .postContainer {
+    height: auto;
     padding: 10px 12px;
     width: 590px;
-    max-height: 1000px;
+    /* max-height: 1000px; */
     border-radius: 10px;
     margin: 20px 8px;
     background-color: white;
@@ -129,7 +150,7 @@ hr {
     color: grey;
 }
 
-.picAndName>img {
+.picAndName img {
     width: 40px;
     height: 40px;
     object-fit: cover;
@@ -190,6 +211,7 @@ hr {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    
    
 }
 
