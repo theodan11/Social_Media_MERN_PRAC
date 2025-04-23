@@ -3,7 +3,7 @@ import './loginPage.css'
 import { AuthContext } from '../context/AuthContext'
 import { LoginFailed, LoginStart, LoginSuccess } from '../context/AuthAction'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const LoginPage = () => {
     const { dispatch } = useContext(AuthContext)
@@ -52,7 +52,9 @@ const LoginPage = () => {
                 <button className='m-btn m-btn-primary ' id='login'>Log in</button>
                 <p>Forgotten password?</p>
                 <hr />
-                <button type='submit' className='m-btn create-btn'>Create new account</button>
+                <Link style={{ textDecoration: "none"}} className='linkCom' to={'/register'}>
+                <button type='submit' className='m-btn create-btn btn-log'>Create new account</button>
+                </Link>
             </form>
         </div>
     )

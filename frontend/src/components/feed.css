@@ -73,7 +73,7 @@ hr {
 
 
 
-.btnItem {
+.btnItem ,.btnItemUpload{
     display: flex;
     align-items: center;
     gap: 10px;
@@ -88,7 +88,7 @@ hr {
     /* color: blue; */
 }
 
-.btnItem:hover, .btnS:hover{
+.btnItem:hover, .btnS:hover ,.btnItemUpload:hover{
     background-color: var(--secondary);
 
 }
