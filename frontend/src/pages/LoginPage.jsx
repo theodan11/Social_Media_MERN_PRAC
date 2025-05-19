@@ -12,9 +12,12 @@ const LoginPage = () => {
     const email = useRef()
     const password = useRef()
 
+    axios.defaults.withCredentials = true
     const handleSubmit = async (e) => {
         e.preventDefault()
         dispatch(LoginStart())
+
+
         const user = {
             email: email.current.value,
             password: password.current.value
@@ -22,7 +25,9 @@ const LoginPage = () => {
         // console.log(user)
         try {
             const res = await axios.post("http://localhost:8000/api/v1/auth/login",
-                user
+                user,{
+                    withCredentials: true
+                }
             )
             console.log(res)
             if (res.status == 200) {

@@ -2,7 +2,8 @@
 # for backend
 backend/node_modules/
 backend/.env
-
+backend/public/
+backend/public/images
 
 # for frontend
 # Logs

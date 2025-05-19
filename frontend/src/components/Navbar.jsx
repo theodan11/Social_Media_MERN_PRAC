@@ -1,13 +1,29 @@
-import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import './navbar.css'
-import { KeyboardArrowDown, Home, WhatsApp, Notifications, Widgets, PeopleOutlineTwoTone, PeopleTwoTone, Search, Storefront, OndemandVideo, Person } from '@mui/icons-material'
+import { KeyboardArrowDown, Home, WhatsApp, Notifications, Widgets, PeopleOutlineTwoTone, PeopleTwoTone, Search, Storefront, OndemandVideo, Person, Logout } from '@mui/icons-material'
 import { AuthContext } from '../context/AuthContext'
+import SidebarShortcutItem from './sidebarShortcutItem'
+import SidebarListItem from './sidebarListItem'
+// import { Logout } from '../context/AuthAction'
+import { LogoutUser } from '../context/AuthAction'
 
 
 const Navbar = () => {
-    const { user } = useContext(AuthContext)
+    const { user, dispatch } = useContext(AuthContext)
+    const [profileModal, setProfileModal] = useState(false)
+    const navigate = useNavigate()
 
+
+    const handleLogout = (e) => {
+        e.preventDefault()
+        // setProfileModal(!profileModal)
+        console.log('logout click')
+        // localStorage.setItem("user", '')
+        localStorage.clear("user")
+        dispatch(LogoutUser())
+        navigate('/')
+    }
     return (
         <div className='navbarContainer'>
             <div className="navbarLeft">
@@ -82,13 +98,23 @@ const Navbar = () => {
                         <Notifications className='rightIcon' />
                         <span className='badge'>5</span>
                     </div>
-                    <Link to={`profile/${user._id}`}>
-                    <div className="profileImageContainer">
+
+                    <div className="profileImageContainer" onClick={() => setProfileModal(!profileModal)}>
                         <img src={user.profilePicture || `/assets/default_dp.jpg`} className='profileImage' alt="" />
                         <span className='profileBadge'><KeyboardArrowDown /></span>
 
                     </div>
-                    </Link>
+                    {profileModal &&
+                        <div className="modal" >
+                            <Link to={`profile/${user._id}`} style={{ "textDecoration": "none", "color": "inherit" }} onClick={() => setProfileModal(!profileModal)}>
+                                <SidebarShortcutItem image={user.profilePicture} text={user.username} />
+                            </Link>
+                            <hr />
+                            <Link to={'/'}  style={{ "textDecoration": "none", "color": "inherit" }}  onClick={(e)=>handleLogout(e)}>
+                            <SidebarListItem Icon={Logout} text={"Log Out"}  />
+                            </Link>
+                        </div>
+                    }
                 </div>
             </div>
         </div>

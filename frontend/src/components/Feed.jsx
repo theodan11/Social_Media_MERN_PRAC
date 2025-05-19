@@ -1,14 +1,22 @@
 import React, { useContext, useEffect, useState } from 'react'
 import './feed.css'
 // import { CloseTwoTone, MoreHorizTwoTone, PublicTwoTone, VideoCameraFrontTwoTone, PhotoLibraryTwoTone, SentimentSatisfiedAltTwoTone, FavoriteTwoTone, ThumbUpAltTwoTone, ReplyTwoTone, CommentTwoTone } from '@mui/icons-material';
-import CreatePost from './createPost';
+import CreatePost from './CreatePost';
 import UserPost from './UserPost';
 import axios from 'axios'
 import { AuthContext } from '../context/AuthContext';
+import { useLocation } from 'react-router-dom';
 
 const Feed = () => {
+  const location = useLocation()
   const [posts, setPosts] = useState([])
-  const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext)
+
+  // const profileId = location.pathname.split('/')[-1]
+  // console.log(profileId)
+  // console.log("user",user._id)
+  // const id = user._id === profileId
+  // console.log(id)
   useEffect(() => {
     const fetchPosts = async () => {
       try {
@@ -29,11 +37,13 @@ const Feed = () => {
 
   return (
     <div className='feedContainer'>
-      <CreatePost />
+      
 
-      { posts.map((post)=>{
+        < CreatePost />
+
+      {posts.map((post) => {
         // console.log(post)
-        return <UserPost key={post._id} post={post}/>
+        return <UserPost key={post._id} post={post} />
 
       })}
       {/* <UserPost  profileImage={'/assets/person/2.jpeg'} postImage={'/assets/post/3.jpeg'} username={"John Doe"} postCaption={"Very nice"}/>

@@ -45,6 +45,8 @@ const userLogin = async(req, res)=>{
 
     return res.status(200).cookie("access_token",token,{
         httpOnly: true,
+        secure: true,
+        sameSite: 'lax'
     }).json(others)
    } catch (error) {
     return res.json(error)

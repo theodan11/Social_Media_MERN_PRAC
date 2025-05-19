@@ -31,6 +31,28 @@
 
 }
 
+.editProfilePic{
+    cursor: pointer;
+    background-color: white;
+    padding: 6px ;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 160px;
+    top: -50px;
+    transition: background-color .3s ease;
+}
+
+
+
+.editProfilePic:hover{
+
+    background-color: rgb(184, 184, 184);
+
+}
+
 .pImage {
     position: absolute;
     left: 15px;

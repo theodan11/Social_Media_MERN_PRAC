@@ -14,5 +14,10 @@ export const AuthReducer =(state, action)=>{
             return{
                 error: action.payload
             }
+
+        case "LOGOUT":
+            return{
+                user: action.payload
+            }
     }
 }
