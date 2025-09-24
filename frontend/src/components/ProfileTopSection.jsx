@@ -15,14 +15,14 @@ const ProfileTopSection = ({ user }) => {
 
     const isId = (userId === locId)
 
-    console.log("param ",locId)
-    console.log("user ",userId)
+    console.log("param ", locId)
+    console.log("user ", userId)
     console.log(isId)
     return (
         <div className='profileTopContainer'>
             <div className="container">
                 <div className="imgContainer">
-                    <img srcSet={'https://' + user?.coverPicture || '/assets/default_cover.jpg'} alt="" srcset="" />
+                    <img srcSet={user?.coverPicture || '/assets/default_cover.jpg'} alt="" srcset="" />
 
                 </div>
                 <div className="pNameAndActions">

@@ -8,6 +8,7 @@ import LoginPage from './pages/LoginPage'
 import Profile_page from './pages/ProfilePage'
 import RegisterPage from './pages/RegisterPage'
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom'
+import UpdateProfilePage from './pages/updateProfilePage'
 
 
 
@@ -25,13 +26,14 @@ function AppRoutes() {
       {!isLogorReg && user && <Navbar />}
       <Routes>
 
-        <Route exact path='/' element={user ? <Home/> : <Navigate to='/login'/>} />
-        <Route path='/login' element={!user ? <LoginPage />: <Navigate to='/'/>} />
+        <Route exact path='/' element={user ? <Home /> : <Navigate to='/login' />} />
+        <Route path='/login' element={!user ? <LoginPage /> : <Navigate to='/' />} />
 
-        <Route path='/register' element={!user ? <RegisterPage />: <Navigate to='/'/>} />
+        <Route path='/register' element={!user ? <RegisterPage /> : <Navigate to='/' />} />
 
 
-        <Route path='/profile/:id' element={<Profile_page />}>
+        <Route path='/profile/:id' element={<Profile_page />}>      </Route>
+        <Route path='/updateProfile/:id' element={<UpdateProfilePage />}>
 
 
         </Route>

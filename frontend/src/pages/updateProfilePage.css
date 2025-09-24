@@ -1,0 +1,57 @@
+.updateProfile {
+    margin-top: 80px;
+}
+
+.updateContainer>h1 {
+    color: rgb(46, 46, 46);
+}
+
+.updateContainer {
+
+    margin: 0 auto;
+    max-width: 1180px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.inputContainer {
+    border-radius: 10px;
+    padding: 10px 30px;
+
+    flex-direction: column;
+    align-items: start;
+    margin-bottom: 20px;
+    min-height: 50px;
+    justify-content: center;
+}
+
+label {
+    color: rgb(67, 66, 66)
+}
+
+.updateProfile>input,
+textarea {
+    background-color: var(--secondary);
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+.submitButton {
+    width: 160px;
+    height: 50px;
+    border-radius: 8px;
+    background-color: var(--primary);
+    padding: 8px 20px;
+    color: var(--secondary);
+    border: none;
+    font-size: 18px;
+    margin-bottom: 100px;
+    cursor: pointer;
+    transition: background-color ease 0.3s;
+}
+
+.submitButton:hover {
+    background-color: var(--button-hover);
+}

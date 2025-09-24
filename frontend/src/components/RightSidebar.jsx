@@ -49,7 +49,7 @@ const RightSidebar = () => {
             </div>
           </div>
           <div className="contacts">
-            {friends.map((friend) => {
+            {friends && friends.map((friend) => {
               return <ContactItems Image={friend['profilePicture']} name={friend['username']} isOnline={true} />
             })}
             {/* <ContactItems Image={"/public/assets/person/1.jpeg"} name={"Jane Doe"} isOnline={true} />

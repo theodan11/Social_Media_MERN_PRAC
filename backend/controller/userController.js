@@ -24,7 +24,7 @@ const updateUser = async (req, res) => {
 
         }
 
-        const updateUser = await UserModel.findByIdAndUpdate(req.params.id, { $set: req.body })
+        const updateUser = await UserModel.findByIdAndUpdate(req.params.id, { $set: req.body }, { new: true })
         const { isAdmin, password, ...others } = updateUser._doc
 
         return res.status(200).json(others)
