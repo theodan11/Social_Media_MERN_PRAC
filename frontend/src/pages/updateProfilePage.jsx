@@ -2,7 +2,7 @@ import React, { useContext, useRef } from 'react'
 import { AuthContext } from '../context/AuthContext'
 import './updateProfilePage.css'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 import { LoginStart, LoginSuccess } from '../context/AuthAction'
 
 const UpdateProfilePage = () => {
@@ -13,7 +13,7 @@ const UpdateProfilePage = () => {
     const descRef = useRef()
     const profilePictureRef = useRef()
     const coverPictureRef = useRef()
-    console.log(user)
+    // console.log(user)
     const handleChange = async () => {
         const url = `http://localhost:8000/api/v1/user/update/${user._id}`
         const updateData = {}
@@ -40,13 +40,15 @@ const UpdateProfilePage = () => {
 
             // console.log(`after update ${JSON.stringify(res.data)}`)
             // localStorage.clear()
-            localStorage.setItem("user", JSON.stringify(res.data))
+
             dispatch(LoginSuccess(res.data))
+            localStorage.setItem("user", JSON.stringify(res.data))
 
-            if (!isFetching) {
-
+            if (localStorage.getItem("user") != null) {
                 navigate('/')
             }
+
+
         } catch (error) {
 
         }
