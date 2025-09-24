@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import './rightSidebar.css'
-import { Search, MoreHoriz } from '@mui/icons-material'
+import { Search, MoreHoriz, Settings } from '@mui/icons-material'
 import ContactItems from './ContactItems'
 import axios from 'axios'
+import { Avatar } from '@mui/material'
 
 
 const RightSidebar = () => {

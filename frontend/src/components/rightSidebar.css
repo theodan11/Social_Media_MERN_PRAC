@@ -1,73 +1,73 @@
-
-
-.rightSidebarContainer{
+.rightSidebarContainer {
     padding: 1.2rem 2rem 1rem 10rem;
     color: var(--icon-color);
-    flex:3.8;
+    flex: 3.8;
 
 
 }
 
-.rightSidebarWrapper{
+.rightSidebarWrapper {
     display: flex;
     flex-direction: column;
     gap: 8px;
     align-items: start;
-    
+
 }
-.rightSidebarWrapper hr{
+
+.rightSidebarWrapper hr {
     width: 100%;
 }
 
 
-h3{
+h3 {
     font-size: 1rem;
 }
 
-.contactHeader{
-    
+.contactHeader {
+
     width: 300px;
     align-items: center;
     display: flex;
     justify-content: space-between;
 }
 
-.contactsActions{
+.contactsActions {
     display: flex;
     gap: 10px;
-    
+
 
 
 }
 
-.actionItem{
+.actionItem {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 5px;
     border-radius: 50%;
     cursor: pointer;
-    transition: .3s ;
-}
-.actionItem:hover{
-  background-color: var(--hover-background);
+    transition: .3s;
 }
 
-.contacts{
+.actionItem:hover {
+    background-color: var(--hover-background);
+}
+
+.contacts {
     padding-top: 1rem;
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
 
-.contacts img{
+.contacts img {
     width: 40px;
     height: 40px;
     object-fit: cover;
     border-radius: 50%;
 }
 
-.contactItem{
+.contactItem {
     border-radius: 8px;
     padding: 8px 8px;
     position: relative;
@@ -76,14 +76,14 @@ h3{
     gap: 20px;
     cursor: pointer;
     color: rgb(56, 56, 56);
-    transition: .3s ;
+    transition: .3s;
 }
 
 
-.onlineIndicator{
+.onlineIndicator {
     position: absolute;
-    left: 28px;
-    bottom: 0px;
+    left: 40px;
+    top: 10px;
     background: rgb(20, 207, 20);
     width: 14px;
     height: 14px;
@@ -91,6 +91,6 @@ h3{
     border: 2.2px solid white;
 }
 
-.contactItem:hover{
+.contactItem:hover {
     background-color: var(--hover-background);
 }

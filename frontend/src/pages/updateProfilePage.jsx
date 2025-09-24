@@ -7,7 +7,7 @@ import { LoginStart, LoginSuccess } from '../context/AuthAction'
 
 const UpdateProfilePage = () => {
     const navigate = useNavigate()
-    const { user, dispatch } = useContext(AuthContext)
+    const { user, dispatch, isFetching } = useContext(AuthContext)
 
     const usernameRef = useRef()
     const descRef = useRef()
@@ -39,10 +39,14 @@ const UpdateProfilePage = () => {
             })
 
             // console.log(`after update ${JSON.stringify(res.data)}`)
-            localStorage.clear("user")
+            // localStorage.clear()
             localStorage.setItem("user", JSON.stringify(res.data))
             dispatch(LoginSuccess(res.data))
-            // navigate('/')
+
+            if (!isFetching) {
+
+                navigate('/')
+            }
         } catch (error) {
 
         }

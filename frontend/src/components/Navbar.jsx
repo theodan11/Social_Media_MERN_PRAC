@@ -110,7 +110,7 @@ const Navbar = () => {
                                 <SidebarShortcutItem image={user.profilePicture} text={user.username} />
                             </Link>
                             <Link to={`updateProfile/${user._id}`} style={{ "textDecoration": "none", "color": "inherit" }} onClick={() => setProfileModal(!profileModal)}>
-                                <SidebarShortcutItem Icon={SettingsApplications} text={"Update Your Profile"} />
+                                <SidebarShortcutItem Icon={Settings} text={"Update Your Profile"} />
                             </Link>
                             <hr />
                             <Link to={'/'} style={{ "textDecoration": "none", "color": "inherit" }} onClick={(e) => handleLogout(e)}>
