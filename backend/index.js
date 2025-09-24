@@ -19,50 +19,50 @@ const app = express()
 
 dotenv.config()
 
-app.use('/images',express.static(path.join(__dirname, 'public/images')))
+app.use('/images', express.static(path.join(__dirname, 'public/images')))
 app.use(cors({
-    origin:' http://localhost:5173',
+    origin: 'http://localhost:5173',
     credentials: true,
-    
+
 }))
 app.use(express.json())
 app.use(cookieParser())
 
 const storage = multer.diskStorage({
-    destination: (req, file, cb)=>{
+    destination: (req, file, cb) => {
         cb(null, 'public/images')
     },
-    filename: (req, file, cb)=>{
+    filename: (req, file, cb) => {
         cb(null, req.body.filename)
     }
 })
 
-const upload = multer({storage: storage})
+const upload = multer({ storage: storage })
 
 
-app.post('/api/v1/upload', upload.single('file'), (req, res)=>{
+app.post('/api/v1/upload', upload.single('file'), (req, res) => {
     try {
         return res.status(200).json({
-            msg:"uploaded successfully"
+            msg: "uploaded successfully"
         })
     } catch (error) {
         return res.status(400).json(error)
     }
 })
 app.use('/api/v1/auth/', authRouter)
-app.use('/api/v1/user/', userRouter) 
-app.use('/api/v1/post/', postRouter) 
+app.use('/api/v1/user/', userRouter)
+app.use('/api/v1/post/', postRouter)
 
 
 
-mongoose.connect(process.env.MONGO_URL).then(()=>{console.log("connected to mongo")})
+mongoose.connect(process.env.MONGO_URL).then(() => { console.log("connected to mongo") })
 
 
-app.get('/', (req, res)=>{
-    return res.send({'msg': 'hello from the other side'})
+app.get('/', (req, res) => {
+    return res.send({ 'msg': 'hello from the other side' })
 })
 
 
-app.listen(process.env.PORT, ()=>{
+app.listen(process.env.PORT, () => {
     console.log(`running on ${process.env.PORT}`);
 })

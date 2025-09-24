@@ -1,10 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './rightSidebar.css'
-import { Search, MoreHoriz} from '@mui/icons-material'
+import { Search, MoreHoriz } from '@mui/icons-material'
 import ContactItems from './ContactItems'
+import axios from 'axios'
 
 
 const RightSidebar = () => {
+  const [friends, setFriends] = useState([])
+
+  useEffect(() => {
+    // const res = await axios.get(`http://localhost:8000/api/v1/post/user/timeline/${user._id}`)
+    const fetchFollowers = async () => {
+      try {
+
+        const res = await axios.get("http://localhost:8000/api/v1/user/get/followers", {
+          withCredentials: true
+        })
+        setFriends(res.data?.data)
+        console.log(res.data)
+      } catch (error) {
+
+      }
+
+
+    }
+    fetchFollowers()
+
+  }, [])
+
+
   return (
     <div className='rightSidebarContainer'>
       <div className="rightSidebarWrapper">
@@ -25,10 +49,13 @@ const RightSidebar = () => {
             </div>
           </div>
           <div className="contacts">
-            <ContactItems Image={"/public/assets/person/1.jpeg"} name={"Jane Doe"} isOnline={true}/>
-            <ContactItems Image={"/public/assets/person/2.jpeg"} name={"John Doe"}/>
-            <ContactItems Image={"/public/assets/person/3.jpeg"} name={"Jando Doe"}  isOnline={true}/>
-            <ContactItems Image={"/public/assets/person/4.jpeg"} name={"Chan Lee"}/>
+            {friends.map((friend) => {
+              return <ContactItems Image={friend['profilePicture']} name={friend['username']} isOnline={true} />
+            })}
+            {/* <ContactItems Image={"/public/assets/person/1.jpeg"} name={"Jane Doe"} isOnline={true} />
+            <ContactItems Image={"/public/assets/person/2.jpeg"} name={"John Doe"} />
+            <ContactItems Image={"/public/assets/person/3.jpeg"} name={"Jando Doe"} isOnline={true} />
+            <ContactItems Image={"/public/assets/person/4.jpeg"} name={"Chan Lee"} /> */}
           </div>
         </div>
       </div>

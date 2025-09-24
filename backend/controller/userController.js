@@ -46,11 +46,11 @@ const followUser = async (req, res) => {
                 return res.status(200).json({ "msg": "followed" })
             } else {
                 return res.status(403).json({ "msg": "illegal action" })
-    
+
             }
 
         }
-       
+
     } catch (error) {
         return res.status(200).json(error)
     }
@@ -59,8 +59,8 @@ const followUser = async (req, res) => {
 
 const unfollowUser = async (req, res) => {
     try {
-        const user =await UserModel.findById(req.body.id)
-        const followingUser =await UserModel.findById(req.params.id)
+        const user = await UserModel.findById(req.body.id)
+        const followingUser = await UserModel.findById(req.params.id)
 
         if (followingUser.followers.includes(req.body.id)) {
             await followingUser.updateOne({ $pull: { followers: req.body.id } })
@@ -72,9 +72,22 @@ const unfollowUser = async (req, res) => {
 
         }
     } catch (error) {
-        return res.status(403).json({"error":error})
+        return res.status(403).json({ "error": error })
     }
 }
 
-export { updateUser, getUser, followUser, unfollowUser }
+const getFollowers = async (req, res) => {
+    try {
+        const id = req.user.id
+
+        const data = await UserModel.findOne({ _id: id })
+        const followers = await UserModel.find({ _id: { $in: data.followers } }).select(["username", "profilePicture"])
+
+        return res.status(200).json({ "success": true, "message": "Followers fetched Successfully", "data": followers })
+    } catch (error) {
+        return res.status(403).json({ "error": error })
+    }
+}
+
+export { updateUser, getUser, followUser, unfollowUser, getFollowers }
 
