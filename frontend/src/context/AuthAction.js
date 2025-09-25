@@ -17,9 +17,31 @@ export const LoginFailed = (error) => {
     }
 }
 
-export const LogoutUser = (user)=>{
+export const LogoutUser = (user) => {
     return {
         type: "LOGOUT",
         payload: null
+    }
+}
+
+
+export const UpdateStart = () => {
+    return {
+        type: "UPDATE_START"
+
+    }
+}
+
+export const UpdateSuccess = (user) => {
+    return {
+        type: "UPDATE_SUCCESS",
+        playload: user
+    }
+}
+
+export const UpdateError = (error) => {
+    return {
+        type: "UPDATE_ERROR",
+        playload: error
     }
 }

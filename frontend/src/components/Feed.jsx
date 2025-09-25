@@ -20,7 +20,7 @@ const Feed = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const res = await axios.get(`http://localhost:8000/api/v1/post/user/timeline/${user._id}`)
+        const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/post/user/timeline/${user._id}`)
         console.log(res)
         if (Array.isArray(res.data)) {
 
@@ -37,9 +37,9 @@ const Feed = () => {
 
   return (
     <div className='feedContainer'>
-      
 
-        < CreatePost />
+
+      < CreatePost />
 
       {posts.map((post) => {
         // console.log(post)

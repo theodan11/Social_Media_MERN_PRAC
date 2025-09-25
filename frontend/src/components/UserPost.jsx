@@ -6,12 +6,12 @@ import { Link } from 'react-router-dom'
 
 const UserPost = ({ post }) => {
   // const [post, setpost] = useState(post)
-  
+
   const [user, setUser] = useState([])
 
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(`http://localhost:8000/api/v1/user/${post.userId}`)
+      const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/user/${post.userId}`)
       setUser(res.data)
     }
 
@@ -22,12 +22,12 @@ const UserPost = ({ post }) => {
     <div className="postContainer">
       <div className="titleContainer">
         <div className="picAndName">
-        <Link  to={`profile/${user._id}`}>
-              
-          <img srcSet={user.profilePicture || '../../public/assets/default_dp.jpg'} alt="" />
-            </Link>
+          <Link to={`profile/${user._id}`}>
+
+            <img srcSet={user.profilePicture || '../../public/assets/default_dp.jpg'} alt="" />
+          </Link>
           <div className="nameAndDate">
-            <Link style={{textDecoration: "none", color: "inherit"}} to={`profile/${user._id}`}>
+            <Link style={{ textDecoration: "none", color: "inherit" }} to={`profile/${user._id}`}>
               <span className='name'>{user.username}</span>
             </Link>
             <span className='date'>{format(post.createdAt)} - <PublicTwoTone className='dateIcon' /></span>
@@ -48,12 +48,12 @@ const UserPost = ({ post }) => {
 
       <div className="postContentContainer">
         <p className='postCaption'>{post.content}</p>
-        <img srcSet={"http://localhost:8000/images/"+post.image ||''} className='postImage' alt="" />
+        <img srcSet={"http://localhost:8000/images/" + post.image || ''} className='postImage' alt="" />
       </div>
       <div className="likeCommentAndShareCount">
         <div className="likeContainer">
           {/* <ThumbUpAltTwoTone /> */}
-          <img src='/assets/heart.png'/>
+          <img src='/assets/heart.png' />
           {/* <FavoriteTwoTone /> */}
           <span>{post.likes.length}</span>
         </div>

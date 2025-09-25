@@ -14,13 +14,13 @@ import axios from 'axios'
 const Profile_page = () => {
     const [user, setUser] = useState({})
     const location = useLocation()
-    
+
     const userId = location.pathname.split('/')[2]
 
-    useEffect(()=>{
-        const fetchUser = async ()=>{
-            const res = await axios.get(`http://localhost:8000/api/v1/user/${userId}`)
-            console.log("from profilePage",res)
+    useEffect(() => {
+        const fetchUser = async () => {
+            const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/user/${userId}`)
+            console.log("from profilePage", res)
             setUser(res.data)
         }
 
@@ -28,15 +28,15 @@ const Profile_page = () => {
     }, [userId])
     // console.log(userId)
 
-    
+
 
     return (
         <>
-            <ProfileTopSection user={user}/>
+            <ProfileTopSection user={user} />
             <div className='profile'>
                 <div className="profileContents">
-                    <LeftProfileContent  user={user} />
-                    <RightProfileContent userId={userId}/>
+                    <LeftProfileContent user={user} />
+                    <RightProfileContent userId={userId} />
                 </div>
             </div>
         </>

@@ -14,7 +14,7 @@ const RightProfileContent = ({ userId }) => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await axios.get(`http://localhost:8000/api/v1/post/${userId}/posts`)
+      const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/post/${userId}/posts`)
       // console.log(res.data)
       setUserPosts(res.data)
     }

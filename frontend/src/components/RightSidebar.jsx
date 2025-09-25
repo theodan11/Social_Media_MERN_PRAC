@@ -3,18 +3,18 @@ import './rightSidebar.css'
 import { Search, MoreHoriz, Settings } from '@mui/icons-material'
 import ContactItems from './ContactItems'
 import axios from 'axios'
-import { Avatar } from '@mui/material'
+
 
 
 const RightSidebar = () => {
   const [friends, setFriends] = useState([])
 
   useEffect(() => {
-    // const res = await axios.get(`http://localhost:8000/api/v1/post/user/timeline/${user._id}`)
+
     const fetchFollowers = async () => {
       try {
 
-        const res = await axios.get("http://localhost:8000/api/v1/user/get/followers", {
+        const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/user/get/followers`, {
           withCredentials: true
         })
         setFriends(res.data?.data)
@@ -53,10 +53,7 @@ const RightSidebar = () => {
             {friends && friends.map((friend) => {
               return <ContactItems Image={friend['profilePicture']} name={friend['username']} isOnline={true} />
             })}
-            {/* <ContactItems Image={"/public/assets/person/1.jpeg"} name={"Jane Doe"} isOnline={true} />
-            <ContactItems Image={"/public/assets/person/2.jpeg"} name={"John Doe"} />
-            <ContactItems Image={"/public/assets/person/3.jpeg"} name={"Jando Doe"} isOnline={true} />
-            <ContactItems Image={"/public/assets/person/4.jpeg"} name={"Chan Lee"} /> */}
+
           </div>
         </div>
       </div>

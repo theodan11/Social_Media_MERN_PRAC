@@ -3,7 +3,7 @@ import { AuthContext } from '../context/AuthContext'
 import './updateProfilePage.css'
 import axios from 'axios'
 import { Navigate, useNavigate } from 'react-router-dom'
-import { LoginStart, LoginSuccess } from '../context/AuthAction'
+import { UpdateStart, UpdateSuccess } from '../context/AuthAction'
 
 const UpdateProfilePage = () => {
     const navigate = useNavigate()
@@ -15,7 +15,7 @@ const UpdateProfilePage = () => {
     const coverPictureRef = useRef()
     // console.log(user)
     const handleChange = async () => {
-        const url = `http://localhost:8000/api/v1/user/update/${user._id}`
+        const url = `${import.meta.env.VITE_API_BASE_URL}/user/update/${user._id}`
         const updateData = {}
 
         if (usernameRef.current.value != '') {
@@ -33,7 +33,7 @@ const UpdateProfilePage = () => {
         // console.log(updateData)
 
         try {
-            dispatch(LoginStart())
+            dispatch(UpdateStart())
             const res = await axios.put(url, updateData, {
                 withCredentials: true,
             })
@@ -41,8 +41,8 @@ const UpdateProfilePage = () => {
             // console.log(`after update ${JSON.stringify(res.data)}`)
             // localStorage.clear()
 
-            dispatch(LoginSuccess(res.data))
-            localStorage.setItem("user", JSON.stringify(res.data))
+            dispatch(UpdateSuccess(res.data))
+            //    localStorage.setItem("user", JSON.stringify(res.data))
 
             if (localStorage.getItem("user") != null) {
                 navigate('/')

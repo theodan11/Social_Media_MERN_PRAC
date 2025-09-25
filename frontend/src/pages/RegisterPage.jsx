@@ -10,7 +10,7 @@ const RegisterPage = () => {
     const password = useRef()
     const navigate = useNavigate()
 
-    const handleSubmit = async(e)=>{
+    const handleSubmit = async (e) => {
         e.preventDefault()
         const newUser = {
             username: username.current.value,
@@ -18,9 +18,9 @@ const RegisterPage = () => {
             password: password.current.value
         }
         try {
-             const res = await axios.post('http://localhost:8000/api/v1/auth/register', newUser)
-             console.log(res)
-             navigate('/login')
+            const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/auth/register`, newUser)
+            console.log(res)
+            navigate('/login')
         } catch (error) {
             console.log(error)
         }
@@ -46,10 +46,10 @@ const RegisterPage = () => {
                     </div> */}
 
                     <div className="emailInput my-input m-input-full">
-                        <input type="text" placeholder='Username' ref={username}/>
+                        <input type="text" placeholder='Username' ref={username} />
                     </div>
                     <div className="emailInput my-input m-input-full">
-                        <input type="email" placeholder='Email address' ref={email}/>
+                        <input type="email" placeholder='Email address' ref={email} />
                     </div>
                     <div className="passwordInput my-input m-input-full">
                         <input type="password" placeholder='New password' ref={password} />

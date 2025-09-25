@@ -1,7 +1,7 @@
-export const AuthReducer =(state, action)=>{
-    switch(action.type){
+export const AuthReducer = (state, action) => {
+    switch (action.type) {
         case "LOGIN_START":
-           return {
+            return {
                 isFetching: true
             }
 
@@ -11,13 +11,28 @@ export const AuthReducer =(state, action)=>{
                 isFetching: false
             }
         case "LOGIN_FAILED":
-            return{
+            return {
                 error: action.payload
             }
 
         case "LOGOUT":
-            return{
+            return {
                 user: action.payload
+            }
+
+        case "UPDATE_START":
+            return {
+                isFetching: true
+            }
+
+        case "UPDATE_SUCCESS":
+            return {
+                user: action.payload
+            }
+
+        case "UPDATE_ERROR":
+            return {
+                error: action.payload
             }
     }
 }

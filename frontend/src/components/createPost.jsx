@@ -15,7 +15,7 @@ const CreatePost = () => {
             content: postCaption.current.value
         }
         if (file) {
-            
+
             const fileName = Date.now() + "_" + file.name.split(".").pop()
 
             const formData = new FormData()
@@ -23,12 +23,12 @@ const CreatePost = () => {
             formData.append("file", file)
             userPost.image = fileName
             console.log(fileName)
-            await axios.post('http://localhost:8000/api/v1/upload', formData)
+            await axios.post(`${import.meta.env.VITE_API_BASE_URL}/upload`, formData)
 
         }
         console.log(userPost)
         try {
-            const res = await axios.post('http://localhost:8000/api/v1/post/create', userPost)
+            const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/post/create`, userPost)
             console.log(res.data)
             window.location.reload()
         } catch (error) {
@@ -45,14 +45,14 @@ const CreatePost = () => {
                 <div className="inputContainer">
                     <input type="text" placeholder={`What's on your mind, ${user.username}`} ref={postCaption} />
                 </div>
-                
+
 
             </div>
             <hr />
             {file && <div className="createPostImage">
-                    <img src={URL.createObjectURL(file)} alt="" />
-                    <div className='imageCancle' onClick={()=>setFile(null)}><Close/></div>
-                </div>}
+                <img src={URL.createObjectURL(file)} alt="" />
+                <div className='imageCancle' onClick={() => setFile(null)}><Close /></div>
+            </div>}
             <div className="postBtns">
                 <div className="btnItem">
                     <VideoCameraFrontTwoTone style={{ color: "#f31100" }} className='btnIcon' />
