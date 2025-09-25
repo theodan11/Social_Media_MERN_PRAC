@@ -2,6 +2,7 @@ import { Close, PhotoLibraryTwoTone, SaveAlt, SentimentSatisfiedAltTwoTone, Vide
 import React, { useContext, useRef, useState } from 'react'
 import { AuthContext } from '../context/AuthContext'
 import axios from 'axios'
+import supabase from '../supabaseApp'
 
 const CreatePost = () => {
     const { user } = useContext(AuthContext)
@@ -10,20 +11,32 @@ const CreatePost = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        if ((postCaption.current.value == '' || postCaption.current.value == undefined) && file == null) {
+            return
+        }
         const userPost = {
             userId: user._id,
             content: postCaption.current.value
         }
         if (file) {
+            // console.log(file)
+            const fileExt = file.name.split(".").pop()
+            const fileName = `public/${user._id}/${Date.now()}.${fileExt}`
 
-            const fileName = Date.now() + "_" + file.name.split(".").pop()
+            const { data, error: errorUpload } = await supabase.storage.from("uploads").upload(fileName, file, {
+                cacheControl: '3600',
+                upsert: false,
+            })
+            if (data) { console.log(data) }
+            if (errorUpload) {
+                console.log(errorUpload.message)
+                setFile(null)
+                return
+            }
 
-            const formData = new FormData()
-            formData.append("filename", fileName)
-            formData.append("file", file)
-            userPost.image = fileName
-            console.log(fileName)
-            await axios.post(`${import.meta.env.VITE_API_BASE_URL}/upload`, formData)
+            const { data: { publicUrl: url } } = supabase.storage.from("/uploads").getPublicUrl(fileName)
+
+            userPost.image = url
 
         }
         console.log(userPost)
@@ -64,7 +77,7 @@ const CreatePost = () => {
                         <PhotoLibraryTwoTone style={{ color: "#0011f3" }} className='btnIcon' />
                         <span className='btnItemText'>Photo/video</span>
                     </label>
-                    <input type="file" accept='.png, .jpg, jpeg' id='fileupload' style={{ display: "none" }} onChange={(e) => setFile(e.target.files[0])} />
+                    <input type="file" accept='.png, .jpg, .jpeg' id='fileupload' style={{ display: "none" }} onChange={(e) => setFile(e.target.files[0])} />
                 </div>
                 <button className="btnItem btnS" type='submit' style={{ border: "none" }}>
                     <SaveAlt style={{ color: "#45e800" }} className='btnIcon' />

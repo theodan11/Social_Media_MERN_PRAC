@@ -1,9 +1,10 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import { AuthContext } from '../context/AuthContext'
 import './updateProfilePage.css'
 import axios from 'axios'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { UpdateStart, UpdateSuccess } from '../context/AuthAction'
+import supabase from '../supabaseApp'
 
 const UpdateProfilePage = () => {
     const navigate = useNavigate()
@@ -11,7 +12,7 @@ const UpdateProfilePage = () => {
 
     const usernameRef = useRef()
     const descRef = useRef()
-    const profilePictureRef = useRef()
+    const [profileImage, setProfileImage] = useState()
     const coverPictureRef = useRef()
     // console.log(user)
     const handleChange = async () => {
@@ -24,8 +25,21 @@ const UpdateProfilePage = () => {
         if (descRef.current.value != '') {
             updateData.desc = descRef.current.value
         }
-        if (profilePictureRef.current.value != '') {
-            updateData.profilePicture = profilePictureRef.current.value
+        if (profileImage) {
+            const fileExt = profileImage.name.split(".").pop()
+            const filePath = `public/${user._id}/profile/${Date.now()}.${fileExt}`
+            const { data, error } = await supabase.storage.from("uploads").upload(filePath, profileImage, {
+                cacheControl: "3600",
+                upsert: false
+            })
+
+            if (error) {
+                throw error.message
+            }
+            const { data: { publicUrl: url } } = supabase.storage.from("uploads").getPublicUrl(filePath)
+
+
+            updateData.profilePicture = url
         }
         if (coverPictureRef.current.value != '') {
             updateData.coverPicture = coverPictureRef.current.value
@@ -42,10 +56,10 @@ const UpdateProfilePage = () => {
             // localStorage.clear()
 
             dispatch(UpdateSuccess(res.data))
-            //    localStorage.setItem("user", JSON.stringify(res.data))
+            localStorage.setItem("user", JSON.stringify(res.data))
 
             if (localStorage.getItem("user") != null) {
-                navigate('/')
+                window.location.reload()
             }
 
 
@@ -61,7 +75,7 @@ const UpdateProfilePage = () => {
                 <h1>Update Profile</h1>
                 <label htmlFor="profilePicture">Profile Picture Link</label>
                 <div className='inputContainer'>
-                    <input type="text" name='profilePicture' ref={profilePictureRef} placeholder={user.profilePicture} />
+                    <input type="file" accept='.jpg, .png' name='profilePicture' onChange={(e) => setProfileImage(e.target.files[0])} />
 
                 </div>
                 <label htmlFor="coverPicture">Cover Picture Link</label>

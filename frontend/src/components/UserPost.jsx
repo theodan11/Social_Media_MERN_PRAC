@@ -48,7 +48,8 @@ const UserPost = ({ post }) => {
 
       <div className="postContentContainer">
         <p className='postCaption'>{post.content}</p>
-        <img srcSet={"http://localhost:8000/images/" + post.image || ''} className='postImage' alt="" />
+        {/* <img srcSet={"http://localhost:8000/images/" + post.image || ''} className='postImage' alt="" /> */}
+        <img srcSet={post.image || ''} className='postImage' alt="" />
       </div>
       <div className="likeCommentAndShareCount">
         <div className="likeContainer">
