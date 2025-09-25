@@ -8,7 +8,7 @@ const RightProfileContent = ({ userId }) => {
   // const [user, setUser] = useState({})
   const { user } = useContext(AuthContext)
   const [userPosts, setUserPosts] = useState([])
-  console.log(userId)
+  // console.log(userId)
 
   const isMyId = user._id === userId
 
@@ -20,7 +20,7 @@ const RightProfileContent = ({ userId }) => {
     }
 
     fetchPosts()
-  }, [])
+  }, [userId])
 
 
 

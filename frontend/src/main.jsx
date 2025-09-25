@@ -8,11 +8,15 @@ import '@fontsource/roboto/700.css';
 import './index.css'
 import App from './App.jsx'
 import { AuthContextProvider } from './context/AuthContext';
+import { UpdateContextProvider } from './context/UpdateContext';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+
     <AuthContextProvider>
-      <App />
+      <UpdateContextProvider>
+        <App />
+      </UpdateContextProvider>
     </AuthContextProvider>
   </StrictMode>,
 )

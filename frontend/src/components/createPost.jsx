@@ -27,7 +27,7 @@ const CreatePost = () => {
                 cacheControl: '3600',
                 upsert: false,
             })
-            if (data) { console.log(data) }
+            // if (data) { console.log(data) }
             if (errorUpload) {
                 console.log(errorUpload.message)
                 setFile(null)
@@ -39,10 +39,10 @@ const CreatePost = () => {
             userPost.image = url
 
         }
-        console.log(userPost)
+        // console.log(userPost)
         try {
             const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/post/create`, userPost)
-            console.log(res.data)
+            // console.log(res.data)
             window.location.reload()
         } catch (error) {
 

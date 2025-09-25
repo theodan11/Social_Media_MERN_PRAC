@@ -3,24 +3,58 @@ import './profileTopSection.css'
 import { Add, CameraAlt, Message, MoreHoriz } from '@mui/icons-material'
 import { useLocation } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
+import { UpdateContext } from '../context/UpdateContext'
+import { UnfollowUser } from '../context/UpdateAction'
+import { followUser } from '../../../backend/controller/userController'
+import axios from 'axios'
 
 const ProfileTopSection = ({ userData }) => {
-    // console.log('from top section ', userData)
-    console.log(userData?.coverPicture)
-    const { user: currentUser } = useContext(AuthContext)
+    const { user: updateUserState, dispatch } = useContext(UpdateContext)
+
+    // console.log(userData?.coverPicture)
+    const { user: currentUser, dispatch: authDispath } = useContext(AuthContext)
 
     const location = useLocation()
     const locId = location.pathname.split("/")[2]
     const userId = currentUser._id
-    // console.log(`this is loc id:${locId}`)
-    // console.log(`this is current user id:${userId}`)
-    const isFollowing = currentUser.followers.includes(locId.toString())
+
+    const isFollowing = currentUser.followings.includes(locId.toString())
     // console.log(isFollowing)
     const isId = (userId === locId)
 
-    // console.log("param ", locId)
-    // console.log("user ", userId)
-    // console.log(isId)
+
+    const handleFollowUnfollow = async () => {
+        if (isFollowing) {
+            dispatch(UnfollowUser(locId))
+
+            const res = await axios.put(`${import.meta.env.VITE_API_BASE_URL}/user/${locId}/unfollow`, { "id": userId }, {
+                withCredentials: true
+            })
+            // console.log("unfollowed")
+            // console.log(res.data)
+            if (res.data?.msg == "unfollowed") {
+
+                localStorage.setItem("user", JSON.stringify(res.data?.data))
+                // localStorage.setItem("user", JSON.stringify(res.data?.data))
+            }
+        }
+        else if (!isFollowing) {
+            dispatch(followUser(locId))
+            const res = await axios.put(`${import.meta.env.VITE_API_BASE_URL}/user/${locId}/follow`, { "id": userId }, {
+                withCredentials: true
+            })
+            if (res.data?.msg == "followed") {
+
+                localStorage.setItem("user", JSON.stringify(res.data?.data))
+            }
+            // console.log("followed")
+            // console.log(res.data)
+        }
+        // window.location.reload()
+        // console.log(updateUserState)
+
+    }
+
     return (
         <div className='profileTopContainer'>
             <div className="container">
@@ -55,12 +89,12 @@ const ProfileTopSection = ({ userData }) => {
                             </div> :
                             isFollowing ? <div className="actions">
                                 {/* <button className='m-btn m-btn-muted'>+ Add to story</button> */}
-                                <button className='m-btn m-btn-primary m-btn-unfollow'>
+                                <button onClick={handleFollowUnfollow} className='m-btn m-btn-primary m-btn-unfollow'>
                                     <Add sx={{ fontSize: 14 }} />Unfollow</button>
                             </div> :
                                 <div className="actions">
                                     {/* <button className='m-btn m-btn-muted'>+ Add to story</button> */}
-                                    <button className='m-btn m-btn-primary'>
+                                    <button className='m-btn m-btn-primary' onClick={handleFollowUnfollow} >
                                         <Add sx={{ fontSize: 14 }} />Follow</button>
                                 </div>
                         }

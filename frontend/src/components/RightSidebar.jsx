@@ -18,7 +18,7 @@ const RightSidebar = () => {
           withCredentials: true
         })
         setFriends(res.data?.data)
-        console.log(res.data)
+        // console.log(res.data)
       } catch (error) {
 
       }

@@ -34,5 +34,7 @@ export const AuthReducer = (state, action) => {
             return {
                 error: action.payload
             }
+
+
     }
 }

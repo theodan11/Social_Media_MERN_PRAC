@@ -18,7 +18,7 @@ const Navbar = () => {
     const [searchQuery, setSearQuery] = useState("")
     const [searchResults, setSearchResults] = useState([])
 
-    const searchURL = "/user/search/user"
+    // const searchURL = "/user/search/user"
 
 
     useEffect(() => {
@@ -29,7 +29,7 @@ const Navbar = () => {
                     setSearchResults(res.data.user)
                 }
 
-                console.log(searchResults)
+                // console.log(searchResults)
             } catch (error) {
                 console.log(error)
             }
@@ -40,13 +40,13 @@ const Navbar = () => {
         }
     }, [searchQuery])
 
-    const handleLogout = (e) => {
+    const handleLogout = async (e) => {
         e.preventDefault()
-        // setProfileModal(!profileModal)
-        console.log('logout click')
-        // localStorage.setItem("user", '')
+
         localStorage.clear("user")
         dispatch(LogoutUser())
+        const res = axios.get(`${import.meta.env.VITE_API_BASE_URL}/auth/logout`)
+
         navigate('/')
     }
     return (
@@ -66,7 +66,7 @@ const Navbar = () => {
                     {searchResults.length > 0 && searchResults.map((searchResult) => {
                         return <Link to={`/profile/${searchResult._id}`} style={{ "textDecoration": "none", "color": "inherit" }}>
                             <div className='searchResultItem'>
-                                {searchResult.profilePicture != "" ? <img src={searchResult.profilePicture} alt="" /> : <Avatar className='avaterImage' />}
+                                {searchResult.profilePicture != "" ? <img src={searchResult.profilePicture} alt="" /> : <Avatar />}
                                 <p key={searchResult._id}>{searchResult.username}</p>
                             </div>
                         </Link>

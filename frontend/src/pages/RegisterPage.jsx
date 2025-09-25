@@ -19,7 +19,7 @@ const RegisterPage = () => {
         }
         try {
             const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/auth/register`, newUser)
-            console.log(res)
+            // console.log(res)
             navigate('/login')
         } catch (error) {
             console.log(error)

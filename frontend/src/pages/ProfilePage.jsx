@@ -20,7 +20,7 @@ const Profile_page = () => {
     useEffect(() => {
         const fetchUser = async () => {
             const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/user/${userId}`)
-            console.log("from profilePage", res)
+            // console.log("from profilePage", res)
             setUser(res.data)
         }
 

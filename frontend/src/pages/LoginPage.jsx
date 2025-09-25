@@ -8,8 +8,8 @@ import { Link, useNavigate } from 'react-router-dom'
 const LoginPage = () => {
     const { dispatch } = useContext(AuthContext)
     const navigate = useNavigate()
-    console.log(import.meta.env.VITE_BASE_URL)
-    console.log(import.meta.env);
+    // console.log(import.meta.env.VITE_BASE_URL)
+    // console.log(import.meta.env);
     const email = useRef()
     const password = useRef()
 
@@ -30,7 +30,7 @@ const LoginPage = () => {
                 withCredentials: true
             }
             )
-            console.log(res)
+            // console.log(res)
             if (res.status == 200 && res.data != undefined) {
                 dispatch(LoginSuccess(res.data))
                 navigate('/')

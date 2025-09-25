@@ -70,7 +70,10 @@ const followUser = async (req, res) => {
             if (!followedUser.followers.includes(req.body.id)) {
                 await user.updateOne({ $push: { followings: req.params.id } })
                 await followedUser.updateOne({ $push: { followers: req.body.id } })
-                return res.status(200).json({ "msg": "followed" })
+                return res.status(200).json({
+                    "msg": "followed",
+                    data: user
+                })
             } else {
                 return res.status(403).json({ "msg": "illegal action" })
 
@@ -92,7 +95,10 @@ const unfollowUser = async (req, res) => {
         if (followingUser.followers.includes(req.body.id)) {
             await followingUser.updateOne({ $pull: { followers: req.body.id } })
             await user.updateOne({ $pull: { followings: req.params.id } })
-            return res.status(200).json({ "msg": "unfollowed" })
+            return res.status(200).json({
+                "msg": "unfollowed",
+                data: user
+            })
         }
         else {
             return res.status(403).json({ "msg": "illegal action" })

@@ -21,7 +21,7 @@ const Feed = () => {
     const fetchPosts = async () => {
       try {
         const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/post/user/timeline/${user._id}`)
-        console.log(res)
+        // console.log(res)
         if (Array.isArray(res.data)) {
 
           setPosts(res.data)
@@ -32,7 +32,7 @@ const Feed = () => {
       // console.log(res.data)
     }
     fetchPosts()
-    console.log(posts)
+    // console.log(posts)
   }, [])
 
   return (
