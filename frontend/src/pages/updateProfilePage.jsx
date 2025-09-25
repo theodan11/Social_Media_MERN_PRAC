@@ -5,6 +5,7 @@ import axios from 'axios'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { UpdateStart, UpdateSuccess } from '../context/AuthAction'
 import supabase from '../supabaseApp'
+import { Add } from '@mui/icons-material'
 
 const UpdateProfilePage = () => {
     const navigate = useNavigate()
@@ -73,10 +74,12 @@ const UpdateProfilePage = () => {
             <div className="updateContainer">
 
                 <h1>Update Profile</h1>
-                <label htmlFor="profilePicture">Profile Picture Link</label>
-                <div className='inputContainer'>
-                    <input type="file" accept='.jpg, .png' name='profilePicture' onChange={(e) => setProfileImage(e.target.files[0])} />
+                <label htmlFor="">Upload a Profile Picture</label>
 
+                <div className='inputContainer-image'>
+                    {user.profilePicture && profileImage == undefined ? <img src={user.profilePicture} className='updateProfileImagePreview' /> : profileImage != undefined ? <img src={URL.createObjectURL(profileImage)} /> : <></>}
+                    <input type="file" accept='.jpg, .png' name='profilePicture' id='profilePictureInput' onChange={(e) => setProfileImage(e.target.files[0])} />
+                    <label htmlFor="profilePictureInput" className='profileAddImage'><Add /></label>
                 </div>
                 <label htmlFor="coverPicture">Cover Picture Link</label>
                 <div className='inputContainer'>

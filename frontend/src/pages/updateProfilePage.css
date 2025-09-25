@@ -55,3 +55,40 @@ textarea {
 .submitButton:hover {
     background-color: var(--button-hover);
 }
+
+.inputContainer-image {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+}
+
+.inputContainer-image>input {
+    display: none;
+
+}
+
+.inputContainer-image>img {
+    /* display: none; */
+    width: 140px;
+    height: 256px;
+    object-fit: cover;
+}
+
+.profileAddImage {
+    border: 1px solid gray;
+    /* padding: 20px; */
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color ease 0.3s;
+}
+
+.profileAddImage:hover {
+    color: rgb(237, 237, 237);
+    background-color: rgb(172, 191, 204);
+    border: none;
+}
