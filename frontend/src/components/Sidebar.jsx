@@ -15,8 +15,8 @@ const Sidebar = () => {
     <div className='sidebar'>
       <div className="sidebarContainer">
         <ul className='sidebarList'>
-          <li style={{"list-style": "none"}}>
-            <Link className='sidebarListItem' to={`/profile/${user._id}`} style={{ textDecoration: "none", color:'inherit'}}>
+          <li style={{ "listStyle": "none" }}>
+            <Link className='sidebarListItem' to={`/profile/${user._id}`} style={{ textDecoration: "none", color: 'inherit' }}>
               <img src={user.profilePicture || "/assets/default_dp.jpg"} className='sidebarProfileImage' alt="" />
               <span className='sidebarListItemText'>{user.username}</span>
             </Link>

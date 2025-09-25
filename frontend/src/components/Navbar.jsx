@@ -45,7 +45,7 @@ const Navbar = () => {
 
         localStorage.clear("user")
         dispatch(LogoutUser())
-        const res = axios.get(`${import.meta.env.VITE_API_BASE_URL}/auth/logout`)
+        const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/auth/logout`)
 
         navigate('/')
     }
