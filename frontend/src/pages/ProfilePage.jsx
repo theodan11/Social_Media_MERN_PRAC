@@ -32,7 +32,7 @@ const Profile_page = () => {
 
     return (
         <>
-            <ProfileTopSection user={user} />
+            <ProfileTopSection userData={user} />
             <div className='profile'>
                 <div className="profileContents">
                     <LeftProfileContent user={user} />

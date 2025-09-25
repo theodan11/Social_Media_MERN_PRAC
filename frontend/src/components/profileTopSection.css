@@ -23,18 +23,19 @@
     object-fit: cover;
 }
 
-.imgContainer > img{
+.imgContainer>img {
     width: 100%;
 }
+
 .pNameAndActions {
     position: relative;
 
 }
 
-.editProfilePic{
+.editProfilePic {
     cursor: pointer;
     background-color: white;
-    padding: 6px ;
+    padding: 6px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -47,7 +48,7 @@
 
 
 
-.editProfilePic:hover{
+.editProfilePic:hover {
 
     background-color: rgb(184, 184, 184);
 
@@ -126,4 +127,8 @@
 .rightActions:hover {
     background-color: var(--hover-background);
 
+}
+
+.m-btn-unfollow {
+    background-color: rgb(170, 170, 170);
 }

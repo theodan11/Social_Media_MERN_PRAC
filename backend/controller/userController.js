@@ -14,6 +14,33 @@ const getUser = async (req, res) => {
 
     }
 }
+const searchUsers = async (req, res) => {
+
+    try {
+        const { username } = req.query
+        // const newQ =username ? String(usernameQ) : ""
+
+        // console.log(username)
+        const matchStage = {
+
+        }
+        const projection = {
+            username: 1,
+            profilePicture: 1
+        }
+        const user = await UserModel.find({ username: { $regex: username, $options: "i" } }, { username: 1, profilePicture: 1 })
+
+        // const user = await UserModel.find({ username: username })
+        // const { password, ...other } = user._doc
+        return res.status(200).json({
+            "user": user
+        })
+
+    } catch (error) {
+        return res.json(error)
+
+    }
+}
 
 
 const updateUser = async (req, res) => {
@@ -89,5 +116,5 @@ const getFollowers = async (req, res) => {
     }
 }
 
-export { updateUser, getUser, followUser, unfollowUser, getFollowers }
+export { updateUser, getUser, followUser, unfollowUser, getFollowers, searchUsers }
 

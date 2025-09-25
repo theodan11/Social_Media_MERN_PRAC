@@ -1,5 +1,6 @@
 .navbarContainer {
-    z-index: 99;
+
+    z-index: 10;
     top: 0;
     padding: 0 15px;
     width: 100vw;
@@ -14,7 +15,7 @@
 }
 
 .navbarLeft {
-    flex:2.6;
+    flex: 2.6;
     display: flex;
     gap: 10px;
 
@@ -122,11 +123,11 @@
 
 .navbarCenterLinks {
     display: flex;
-   
+
 }
 
 .navbarRight {
-    flex:3.2;
+    flex: 3.2;
     display: flex;
     width: 186px;
     justify-content: end;
@@ -174,10 +175,12 @@
     height: 26px !important;
 
 }
-.profileImageContainer{
+
+.profileImageContainer {
     position: relative;
 }
-.profileImage{
+
+.profileImage {
     width: 40px;
     height: 40px;
     object-fit: cover;
@@ -211,7 +214,7 @@
     gap: 10px;
 }
 
-.hcontent:hover::after{
+.hcontent:hover::after {
     /* content: ''; */
     display: block;
     position: absolute;
@@ -223,7 +226,7 @@
     border-radius: 8px;
 }
 
-.modal{
+.modal {
     width: 360px;
     /* height: 472px; */
     /* min-height: 100px; */
@@ -240,36 +243,91 @@
     box-shadow: 0px 3px 12px -3px rgba(0, 0, 0, 0.75);
 }
 
-.centerItemContainer{
+.centerItemContainer {
     position: relative;
 }
 
-.menu:hover::after{
+.menu:hover::after {
     content: 'Menu';
 }
 
-.message:hover::after{
+.message:hover::after {
     content: 'Messanger';
 }
 
-.notifications:hover::after{
+.notifications:hover::after {
     content: 'Notifications';
 }
 
-.friends:hover::after{
-    content:'Friends'
-}
-.video:hover::after{
-    content:'Videos'
-}
-.marketplace:hover::after{
-    content:'Marketplace'
-}
-.groups:hover::after{
-    content:'Groups'
+.friends:hover::after {
+    content: 'Friends'
 }
 
-.home:hover::after{
+.video:hover::after {
+    content: 'Videos'
+}
+
+.marketplace:hover::after {
+    content: 'Marketplace'
+}
+
+.groups:hover::after {
+    content: 'Groups'
+}
+
+.home:hover::after {
     content: 'Home';
 }
 
+.searchResultContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    position: absolute;
+    top: 60px;
+    left: 60px;
+    width: 350px;
+    z-index: 999;
+    min-height: auto;
+    /* height: 100px; */
+    background-color: white;
+}
+
+.searchResultItem {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    max-height: 60px;
+    gap: 8px;
+    width: 300px;
+    height: 60px;
+    /* background-color: aqua; */
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 8px 4px;
+    color: rgb(6, 6, 6);
+    transition: background-color ease 0.3s;
+}
+
+.searchResultItem:hover {
+    background-color: rgb(230, 230, 230);
+}
+
+.searchResultItem>img,
+.avaterImage {
+    height: 50px;
+    border-radius: 100%;
+    width: 50px;
+
+}
+
+.cancelSearch {
+    color: gray;
+    cursor: pointer;
+}
+
+.cancelSearch:hover {
+    color: rgb(33, 33, 33);
+}
