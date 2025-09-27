@@ -20,7 +20,7 @@
     max-height: 80vh;
     overflow-y: auto;
     overflow-x: hidden;
-    position: sticky;
+    /* position: sticky; */
     top: 80px;
     display: flex;
     flex-direction: column;

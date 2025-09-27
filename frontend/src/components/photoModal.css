@@ -1,11 +1,22 @@
 .imageModal {
     position: absolute;
     top: 10px;
-    left: 300px;
+    left: 10px;
     z-index: 30;
+    display: flex;
 }
 
 .imageModal>img {
-    width: 500px;
-    height: 800px;
+    width: auto;
+    height: 90vh;
+}
+
+.imageModal>button {
+    background-color: rgb(181, 181, 181);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 36px;
+    color: white;
+    margin: auto 12px;
 }
