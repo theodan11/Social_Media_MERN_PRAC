@@ -93,7 +93,7 @@ const deletePost = async (req, res) => {
 
 const userPosts = async (req, res) => {
     const posts = await PostModel.find({ userId: req.params.id })
-    posts.sort((a, b)=>b.createdAt-a.createdAt)
+    posts.sort((a, b) => b.createdAt - a.createdAt)
     return res.status(200).json(posts)
 }
 
@@ -103,16 +103,30 @@ const userTimeline = async (req, res) => {
         const currentUser = await UserModel.findById(req.params.userId)
         const userPost = await PostModel.find({ userId: currentUser._id })
         const friendsPost = await Promise.all(currentUser.followings.map((friendId) => {
-         return  PostModel.find({ userId: friendId })
+            return PostModel.find({ userId: friendId })
         }))
         const timeline = userPost.concat(...friendsPost)
-        timeline.sort((a, b)=> b.createdAt - a.createdAt)
+        timeline.sort((a, b) => b.createdAt - a.createdAt)
         return res.status(200).json(timeline)
 
     } catch (error) {
         return res.status(500).json({ "msg": "internal error" })
     }
 
+}
+
+const getUserPhotos = async (req, res) => {
+    try {
+        const currentUserId = req.params.id
+        let userPostPhotos = await PostModel.find({ userId: currentUserId }).select(["image"])
+        userPostPhotos = userPostPhotos.sort((a, b) => b.createdAt - a.createdAt)
+        return res.status(200).json({
+            "msg": "User photo fetch successfully",
+            "data": userPostPhotos
+        })
+    } catch (error) {
+        return res.status(500).json({ "msg": "internal error", "error": error.message })
+    }
 }
 
 export {
@@ -123,5 +137,6 @@ export {
     likePost,
     deletePost,
     userPosts,
-    userTimeline
+    userTimeline,
+    getUserPhotos
 }
