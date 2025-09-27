@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-
+import './leftProfileContent.css'
 const LeftProfileContent = ({ user }) => {
   const [photos, setPhotos] = useState([])
 
@@ -8,13 +8,16 @@ const LeftProfileContent = ({ user }) => {
 
     const fetchPhotos = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/post/user/photos/${user._id}`, {
+        setPhotos([])
+        const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/post/user/photos/${user._id}?limitQuery=8`, {
           withCredentials: true
         })
-        console.log(res.data)
-        if (res.data.length > 0) {
+        console.log(res.data.data)
+        if (res.data.data.length > 0) {
+          setPhotos(res.data?.data)
 
-          setPhotos(res.data)
+
+          console.log(`from photos state: ${photos}`)
         }
       } catch (error) {
         console.log(error)
@@ -22,6 +25,7 @@ const LeftProfileContent = ({ user }) => {
     }
     fetchPhotos()
   }, [user])
+  console.log(`from photos state: ${photos}`)
 
   return (
     <div className='leftContentContainer'>
@@ -31,8 +35,20 @@ const LeftProfileContent = ({ user }) => {
         <hr />
       </div>
 
-      <div className="leftContentPhotos card">
+      <div className="leftContentPhotos">
         <h2 className='title'>Photos</h2>
+
+        <div className="photoListContainer">
+          {photos.map((photo) => {
+
+            {/*  */ }
+            return <div key={photo._id} className="photoItem">
+              <img srcSet={photo.image} alt="" />
+            </div>
+
+
+          })}
+        </div>
 
 
       </div>

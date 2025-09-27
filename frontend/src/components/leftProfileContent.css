@@ -1,0 +1,59 @@
+.leftContentContainer {
+    scrollbar-width: thin;
+    overflow-y: scroll;
+    scrollbar-color: #cfcfcf #f1f1f1;
+}
+
+.leftContentPhotos {
+
+    /* height: auto; */
+    min-width: 405px;
+    /* min-height: 150px; */
+    /* min-height: 150px; */
+    height: 400px;
+    background-color: white;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px 1px rgb(230, 230, 230);
+
+}
+
+::-webkit-scrollbar {
+    width: 5px !important;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1 !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #cfcfcf !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #a8a8a8;
+}
+
+.photoListContainer {
+    margin-top: 8px;
+    /* background-color: aqua; */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+/* .photoItem {
+    width: ;
+} */
+
+.photoListContainer>.photoItem>img {
+    /* height: 100%; */
+    width: 90px;
+    height: 100px;
+    background-color: rgb(151, 151, 151);
+
+
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+}

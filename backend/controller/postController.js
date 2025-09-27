@@ -118,8 +118,10 @@ const userTimeline = async (req, res) => {
 const getUserPhotos = async (req, res) => {
     try {
         const currentUserId = req.params.id
-        let userPostPhotos = await PostModel.find({ userId: currentUserId }).select(["image"])
-        userPostPhotos = userPostPhotos.sort((a, b) => b.createdAt - a.createdAt)
+        const { limitQuery } = req.query
+
+        let userPostPhotos = await PostModel.find({ userId: currentUserId }).sort({ createdAt: 'descending' }).select(["image", "createdAt"]).limit(limitQuery || 0)
+        // userPostPhotos = userPostPhotos.sort((a, b) => b.createdAt - a.createdAt)
         return res.status(200).json({
             "msg": "User photo fetch successfully",
             "data": userPostPhotos
