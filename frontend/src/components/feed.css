@@ -1,4 +1,5 @@
 .feedContainer {
+    position: relative;
     flex: 4;
     padding-top: 20px;
 }
@@ -16,19 +17,21 @@
     -moz-box-shadow: 1px 8px 6px -4px rgba(176, 176, 176, 1);
     box-shadow: 1px 8px 6px -4px rgba(176, 176, 176, 1);
 }
-.likeContainer{
+
+.likeContainer {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.likeContainer> img{
+.likeContainer>img {
     width: 24px;
 }
 
-.likeContainer> span{
+.likeContainer>span {
     color: rgb(106, 106, 106);
 }
+
 .profileImage {
     width: 40px;
     height: 40px;
@@ -73,7 +76,8 @@ hr {
 
 
 
-.btnItem ,.btnItemUpload{
+.btnItem,
+.btnItemUpload {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -82,13 +86,15 @@ hr {
     cursor: pointer;
 }
 
-.btnS{
+.btnS {
     padding: 6px 20px;
     background-color: white;
     /* color: blue; */
 }
 
-.btnItem:hover, .btnS:hover ,.btnItemUpload:hover{
+.btnItem:hover,
+.btnS:hover,
+.btnItemUpload:hover {
     background-color: var(--secondary);
 
 }
@@ -211,8 +217,8 @@ hr {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    
-   
+
+
 }
 
 .lcsBtnContainer {
@@ -229,7 +235,7 @@ hr {
     background-color: var(--secondary);
 }
 
-.createPostImage{
+.createPostImage {
     position: relative;
     width: 600px;
     height: 420px;
@@ -238,8 +244,9 @@ hr {
     align-items: center;
 
 }
-.imageCancle{
-    border-radius:50% ;
+
+.imageCancle {
+    border-radius: 50%;
     padding: 8px;
     position: absolute;
     top: 5px;
@@ -251,10 +258,11 @@ hr {
     align-items: center;
 }
 
-.imageCancle:hover{
+.imageCancle:hover {
     background-color: rgb(238, 238, 234);
 }
-.createPostImage > img{
+
+.createPostImage>img {
     /* top: 300%; */
     /* left: -50%; */
     object-fit: cover;

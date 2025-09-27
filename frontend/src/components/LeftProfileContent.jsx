@@ -1,9 +1,21 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import './leftProfileContent.css'
+
+
+import PhotoModal from './PhotoModal'
 const LeftProfileContent = ({ user }) => {
   const [photos, setPhotos] = useState([])
+  const [isModal, setisModal] = useState(false)
 
+  const [imageIndex, setImageIndex] = useState()
+  const handleImageClick = (i) => {
+    setisModal(true)
+    setImageIndex(i)
+
+  }
+
+  console.log(` index is: ${imageIndex}`)
   useEffect(() => {
 
     const fetchPhotos = async () => {
@@ -25,10 +37,11 @@ const LeftProfileContent = ({ user }) => {
     }
     fetchPhotos()
   }, [user])
-  console.log(`from photos state: ${photos}`)
+  // console.log(`from photos state: ${photos}`)
 
   return (
     <div className='leftContentContainer'>
+      {isModal && <PhotoModal userId={user._id} imageIndex={imageIndex} />}
       <div className="introCard card">
         <h2 className='title'>Intro</h2>
         <p className='desc'>{user.desc}</p>
@@ -39,10 +52,10 @@ const LeftProfileContent = ({ user }) => {
         <h2 className='title'>Photos</h2>
 
         <div className="photoListContainer">
-          {photos.map((photo) => {
+          {photos.map((photo, i) => {
 
             {/*  */ }
-            return <div key={photo._id} className="photoItem">
+            return <div key={photo._id} onClick={() => handleImageClick(i)} className="photoItem">
               <img srcSet={photo.image} alt="" />
             </div>
 
