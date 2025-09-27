@@ -43,9 +43,12 @@ const LeftProfileContent = ({ user }) => {
       {/* {isModal && <PhotoModal userId={user._id} imageIndex={imageIndex} photo={photos} />} */}
       {isModal &&
         <div className='imageModal'>
-          <button onClick={() => setImageIndex((prev) => prev > 0 ? prev -= 1 : photos.length - 1)}>-</button>
-          <img srcSet={photos[imageIndex]["image"]} alt="" />
-          <button onClick={() => setImageIndex((prev) => prev < photos.length - 1 ? prev += 1 : 0)}>+</button>
+          <div className="imageContainer">
+            <button className='closeBtn' onClick={() => setisModal(false)}>x</button>
+            <button className='left' onClick={() => setImageIndex((prev) => prev > 0 ? prev -= 1 : photos.length - 1)}>-</button>
+            <img srcSet={photos[imageIndex]["image"]} alt="" />
+            <button className='right' onClick={() => setImageIndex((prev) => prev < photos.length - 1 ? prev += 1 : 0)}>+</button>
+          </div>
 
         </div>}
       <div className="introCard card">
