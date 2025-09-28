@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 
 // Creating user
 router.post('/register', userRegister)
-router.post('/logout', logOut)
+router.get('/logout', logOut)
 router.post('/login', userLogin)
 
 

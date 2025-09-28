@@ -7,6 +7,7 @@ import { UpdateContext } from '../context/UpdateContext'
 import { UnfollowUser } from '../context/UpdateAction'
 import { followUser } from '../../../backend/controller/userController'
 import axios from 'axios'
+import { LoginSuccess } from '../context/AuthAction'
 
 const ProfileTopSection = ({ userData }) => {
     const { user: updateUserState, dispatch } = useContext(UpdateContext)
@@ -44,7 +45,7 @@ const ProfileTopSection = ({ userData }) => {
                 withCredentials: true
             })
             if (res.data?.msg == "followed") {
-
+                authDispath(LoginSuccess(res.data?.data))
                 localStorage.setItem("user", JSON.stringify(res.data?.data))
             }
             // console.log("followed")

@@ -43,11 +43,11 @@ const Navbar = () => {
     const handleLogout = async (e) => {
         e.preventDefault()
 
-        localStorage.clear("user")
+        navigate('/')
         dispatch(LogoutUser())
+        localStorage.clear("user")
         const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/auth/logout`)
 
-        navigate('/')
     }
     return (
         <div className='navbarContainer'>
@@ -151,7 +151,10 @@ const Navbar = () => {
                                 <SidebarShortcutItem Icon={Settings} text={"Update Your Profile"} />
                             </Link>
                             <hr />
-                            <Link to={'/'} style={{ "textDecoration": "none", "color": "inherit" }} onClick={(e) => handleLogout(e)}>
+                            {/* <button style={{ "textDecoration": "none", "color": "inherit" }} onClick={handleLogout}>
+                                <SidebarListItem Icon={Logout} text={"Log Out"} />
+                            </button> */}
+                            <Link to={'/'} style={{ "textDecoration": "none", "color": "inherit" }} onClick={handleLogout}>
                                 <SidebarListItem Icon={Logout} text={"Log Out"} />
                             </Link>
                         </div>
