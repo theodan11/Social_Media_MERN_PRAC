@@ -63,8 +63,8 @@ const Navbar = () => {
 
                 {searchQuery != '' && <div className="searchResultContainer">
 
-                    {searchResults.length > 0 && searchResults.map((searchResult) => {
-                        return <Link to={`/profile/${searchResult._id}`} style={{ "textDecoration": "none", "color": "inherit" }}>
+                    {searchResults.length > 0 && searchResults.map((searchResult, i) => {
+                        return <Link to={`/profile/${searchResult._id}`} key={i} style={{ "textDecoration": "none", "color": "inherit" }}>
                             <div className='searchResultItem'>
                                 {searchResult.profilePicture != "" ? <img src={searchResult.profilePicture} alt="" /> : <Avatar />}
                                 <p key={searchResult._id}>{searchResult.username}</p>

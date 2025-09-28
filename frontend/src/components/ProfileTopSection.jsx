@@ -1,57 +1,63 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import './profileTopSection.css'
 import { Add, CameraAlt, Message, MoreHoriz } from '@mui/icons-material'
 import { useLocation } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
 import { UpdateContext } from '../context/UpdateContext'
-import { UnfollowUser } from '../context/UpdateAction'
-import { followUser } from '../../../backend/controller/userController'
+import { FollowUser, UnfollowUser } from '../context/UpdateAction'
 import axios from 'axios'
-import { LoginSuccess } from '../context/AuthAction'
 
 const ProfileTopSection = ({ userData }) => {
     const { user: updateUserState, dispatch } = useContext(UpdateContext)
 
     // console.log(userData?.coverPicture)
     const { user: currentUser, dispatch: authDispath } = useContext(AuthContext)
-
+    // useEffect(() => {
+    //     dispatch(UpdateContextInit(currentUser.followings))
+    // }, [])
     const location = useLocation()
     const locId = location.pathname.split("/")[2]
     const userId = currentUser._id
 
-    const isFollowing = currentUser.followings.includes(locId.toString())
-    // console.log(isFollowing)
+    const isFollowing = updateUserState.followings.includes(locId.toString())
+    console.log(`from currentUser ${currentUser.followings}`)
+    console.log(`from updateUser ${updateUserState.followings}`)
     const isId = (userId === locId)
 
 
     const handleFollowUnfollow = async () => {
-        if (isFollowing) {
-            dispatch(UnfollowUser(locId))
+        try {
+            if (isFollowing) {
+                dispatch(UnfollowUser(locId))
 
-            const res = await axios.put(`${import.meta.env.VITE_API_BASE_URL}/user/${locId}/unfollow`, { "id": userId }, {
-                withCredentials: true
-            })
-            // console.log("unfollowed")
-            // console.log(res.data)
-            if (res.data?.msg == "unfollowed") {
+                const res = await axios.put(`${import.meta.env.VITE_API_BASE_URL}/user/${locId}/unfollow`, { "id": userId }, {
+                    withCredentials: true
+                })
+                // console.log("unfollowed")
+                // console.log(res.data)
+                if (res.data?.msg == "unfollowed") {
 
-                localStorage.setItem("user", JSON.stringify(res.data?.data))
-                // localStorage.setItem("user", JSON.stringify(res.data?.data))
+
+                    // localStorage.setItem("user", JSON.stringify(res.data?.data))
+                    // localStorage.setItem("user", JSON.stringify(res.data?.data))
+                }
             }
-        }
-        else if (!isFollowing) {
-            dispatch(followUser(locId))
-            const res = await axios.put(`${import.meta.env.VITE_API_BASE_URL}/user/${locId}/follow`, { "id": userId }, {
-                withCredentials: true
-            })
-            if (res.data?.msg == "followed") {
-                authDispath(LoginSuccess(res.data?.data))
-                localStorage.setItem("user", JSON.stringify(res.data?.data))
+            else if (!isFollowing) {
+                dispatch(FollowUser(locId))
+                const res = await axios.put(`${import.meta.env.VITE_API_BASE_URL}/user/${locId}/follow`, { "id": userId }, {
+                    withCredentials: true
+                })
+                if (res.data?.msg === "followed") {
+                    // dispatch(FollowUser(res.data?.data))
+                    // localStorage.setItem("user", JSON.stringify(res.data?.data))
+                }
+                // console.log("followed")
+                // console.log(res.data)
             }
-            // console.log("followed")
-            // console.log(res.data)
+        } catch (error) {
+            console.log(`Error while follow/unfollowing ${error}`)
         }
-        // window.location.reload()
+        window.location.reload()
         // console.log(updateUserState)
 
     }

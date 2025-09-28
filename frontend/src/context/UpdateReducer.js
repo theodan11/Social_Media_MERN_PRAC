@@ -1,5 +1,7 @@
 export const UpdateReducer = (state, action) => {
     switch (action.type) {
+
+
         case "FOLLOW_USER":
 
             let updatedFollowUserCopy = {
