@@ -41,7 +41,9 @@ const CreatePost = () => {
         }
         // console.log(userPost)
         try {
-            const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/post/create`, userPost)
+            const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/post/create`, userPost, {
+                withCredentials: true
+            })
             // console.log(res.data)
             window.location.reload()
         } catch (error) {
