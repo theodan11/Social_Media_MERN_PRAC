@@ -14,8 +14,6 @@ import UpdateProfilePage from './pages/updateProfilePage'
 
 function AppRoutes() {
   const { user } = useContext(AuthContext)
-  // const navigate = useNavigate() 
-  // const location = useLocation()
 
   const hideNavbar = ['/login', '/register']
 

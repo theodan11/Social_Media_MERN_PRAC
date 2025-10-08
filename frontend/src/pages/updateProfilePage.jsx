@@ -53,9 +53,6 @@ const UpdateProfilePage = () => {
                 withCredentials: true,
             })
 
-            // console.log(`after update ${JSON.stringify(res.data)}`)
-            // localStorage.clear()
-
             dispatch(UpdateSuccess(res.data))
             localStorage.setItem("user", JSON.stringify(res.data))
 

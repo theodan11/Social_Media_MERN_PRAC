@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
 import './feed.css'
-// import { CloseTwoTone, MoreHorizTwoTone, PublicTwoTone, VideoCameraFrontTwoTone, PhotoLibraryTwoTone, SentimentSatisfiedAltTwoTone, FavoriteTwoTone, ThumbUpAltTwoTone, ReplyTwoTone, CommentTwoTone } from '@mui/icons-material';
 import CreatePost from './CreatePost';
 import UserPost from './UserPost';
 import axios from 'axios'
@@ -12,16 +11,10 @@ const Feed = () => {
   const [posts, setPosts] = useState([])
   const { user } = useContext(AuthContext)
 
-  // const profileId = location.pathname.split('/')[-1]
-  // console.log(profileId)
-  // console.log("user",user._id)
-  // const id = user._id === profileId
-  // console.log(id)
   useEffect(() => {
     const fetchPosts = async () => {
       try {
         const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/post/user/timeline/${user._id}`)
-        // console.log(res)
         if (Array.isArray(res.data)) {
 
           setPosts(res.data)
@@ -29,10 +22,8 @@ const Feed = () => {
       } catch (error) {
         console.log(error)
       }
-      // console.log(res.data)
     }
     fetchPosts()
-    // console.log(posts)
   }, [])
 
   return (
@@ -42,13 +33,8 @@ const Feed = () => {
       < CreatePost />
 
       {posts.map((post) => {
-        // console.log(post)
         return <UserPost key={post._id} post={post} />
-
       })}
-      {/* <UserPost  profileImage={'/assets/person/2.jpeg'} postImage={'/assets/post/3.jpeg'} username={"John Doe"} postCaption={"Very nice"}/>
-      <UserPost  profileImage={'/assets/person/3.jpeg'} postImage={'/assets/post/4.jpeg'} username={"Chan Du"} postCaption={"Chan du hai mera nam"}/>
-      <UserPost  profileImage={'/assets/person/5.jpeg'} postImage={'/assets/post/8.jpeg'} username={"Chan Lee"} postCaption={"Chan lee hai mera nam🙄"}/> */}
 
 
 

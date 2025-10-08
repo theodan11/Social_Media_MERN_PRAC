@@ -10,11 +10,8 @@ import axios from 'axios'
 const ProfileTopSection = ({ userData }) => {
     const { user: updateUserState, dispatch } = useContext(UpdateContext)
 
-    // console.log(userData?.coverPicture)
     const { user: currentUser, dispatch: authDispath } = useContext(AuthContext)
-    // useEffect(() => {
-    //     dispatch(UpdateContextInit(currentUser.followings))
-    // }, [])
+
     const location = useLocation()
     const locId = location.pathname.split("/")[2]
     const userId = currentUser._id
@@ -51,8 +48,7 @@ const ProfileTopSection = ({ userData }) => {
                     // dispatch(FollowUser(res.data?.data))
                     // localStorage.setItem("user", JSON.stringify(res.data?.data))
                 }
-                // console.log("followed")
-                // console.log(res.data)
+
             }
         } catch (error) {
             console.log(`Error while follow/unfollowing ${error}`)
