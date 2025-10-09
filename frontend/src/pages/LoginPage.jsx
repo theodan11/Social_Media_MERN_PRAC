@@ -27,7 +27,8 @@ const LoginPage = () => {
         try {
             const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/auth/login`,
                 user, {
-                withCredentials: true
+                withCredentials: true,
+                timeout: 60000
             }
             )
             // console.log(res)

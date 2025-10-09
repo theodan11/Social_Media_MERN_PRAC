@@ -24,10 +24,10 @@ function AppRoutes() {
       {!isLogorReg && user && <Navbar />}
       <Routes>
 
-        <Route exact path='/' element={user ? <Home /> : <Navigate to='/login' />} />
-        <Route path='/login' element={!user ? <LoginPage /> : <Navigate to='/' />} />
+        <Route exact path='/' element={user || user != undefined ? <Home /> : <Navigate to='/login' />} />
+        <Route path='/login' element={!user || user === undefined ? <LoginPage /> : <Navigate to='/' />} />
 
-        <Route path='/register' element={!user ? <RegisterPage /> : <Navigate to='/' />} />
+        <Route path='/register' element={!user || user === undefined ? <RegisterPage /> : <Navigate to='/' />} />
 
 
         <Route path='/profile/:id' element={<Profile_page />}>      </Route>

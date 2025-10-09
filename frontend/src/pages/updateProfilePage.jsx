@@ -52,12 +52,14 @@ const UpdateProfilePage = () => {
             const res = await axios.put(url, updateData, {
                 withCredentials: true,
             })
+            if (res.data) {
+                dispatch(UpdateSuccess(res.data))
+                localStorage.setItem("user", JSON.stringify(res.data))
 
-            dispatch(UpdateSuccess(res.data))
-            localStorage.setItem("user", JSON.stringify(res.data))
+                if (localStorage.getItem("user") != null) {
+                    navigate('/')
+                }
 
-            if (localStorage.getItem("user") != null) {
-                window.location.reload()
             }
 
 
@@ -74,7 +76,7 @@ const UpdateProfilePage = () => {
                 <label htmlFor="">Upload a Profile Picture</label>
 
                 <div className='inputContainer-image'>
-                    {user.profilePicture && profileImage == undefined ? <img src={user.profilePicture} className='updateProfileImagePreview' /> : profileImage != undefined ? <img src={URL.createObjectURL(profileImage)} /> : <></>}
+                    {!user.profilePicture || profileImage == undefined ? <img src={user.profilePicture} className='updateProfileImagePreview' /> : profileImage != undefined ? <img src={URL.createObjectURL(profileImage)} /> : <></>}
                     <input type="file" accept='.jpg, .png' name='profilePicture' id='profilePictureInput' onChange={(e) => setProfileImage(e.target.files[0])} />
                     <label htmlFor="profilePictureInput" className='profileAddImage'><Add /></label>
                 </div>
